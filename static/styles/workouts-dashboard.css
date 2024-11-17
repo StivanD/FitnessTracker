@@ -1,0 +1,49 @@
+/* Workout Dashboard Section */
+/* Search and Filter Section */
+.search-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.search-bar input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    flex: 1;
+    width: 500px;
+}
+
+.search-bar button {
+    padding: 0.8rem 1.5rem;
+    background-color: #f04;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #333;
+    color: #f04;
+}
+
+.category-filter select {
+    padding: 0.8rem 1.3rem 0.8rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.workout-card.active {
+    display: flex;
+}
+
+.not-spaced {
+    justify-content: flex-start;
+    gap: 3.2rem;
+}

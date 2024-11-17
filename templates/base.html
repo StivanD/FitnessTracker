@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <script src="https://kit.fontawesome.com/64727f0e11.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <p class="logo-title">Fitness Tracker</p>
+                <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <div class="nav-links">
+                <div class="main-links">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}">Home</a></li>
+                        <li><a href="{% url 'workouts' %}">Workouts</a></li>
+                        <li><a href="#">Meals</a></li>
+                        <li><a href="/progress">Progress</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="nav-login-register-logout">
+                    <ul>
+                        {#                        {% if user.is_authenticated %}#}
+                        <li><a href="/logout">Logout</a></li>
+                        {#                        {% else %}#}
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                        {#                        {% endif %}#}
+                    </ul>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+</header>
+<script src="{% static 'scripts/navbar.js' %}"></script>
+{% block content %}
+{% endblock %}
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Fitness Tracker. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <section class="workouts-hero">
+        <div class="hero-content">
+            <h2>Our Workouts</h2>
+            <p>Explore a variety of workouts to help you reach your fitness goals.</p>
+        </div>
+    </section>
+
+    <section class="workout-categories">
+        <div class="container">
+            <h3>Categories</h3>
+            <div class="category-grid">
+                <div class="category-item">
+                    <img src="{% static 'images/strength.jpg' %}" alt="Strength">
+                    <h4 class="category-name">Strength Training</h4>
+                    <div class="category-description-container">
+                        <p class="category-description">
+                            Build muscle, increase strength, and improve overall fitness with
+                            weight training exercises.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="category-item">
+                    <img src="{% static 'images/cardio.jpg' %}" alt="Cardio">
+                    <h4 class="category-name">Cardio</h4>
+                    <div class="category-description-container">
+                        <p class="category-description">
+                            Boost your heart health and endurance with aerobic exercises like running, cycling, and
+                            swimming.
+                        </p>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="{% static 'images/flexibility.jpg' %}" alt="Yoga">
+                    <h4 class="category-name">Flexibility</h4>
+                    <div class="category-description-container">
+                        <p class="category-description">
+                            Increase your flexibility and range of motion with stretching and yoga routines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-workouts">
+        <div class="container">
+            <h3>Featured Workouts</h3>
+            <div class="workout-grid">
+                <div class="workout-card">
+                    <img src="{% static 'images/workout1.jpg' %}" alt="Workout 1">
+                    <div class="workout-info">
+                        <h4>Beginner Strength Training</h4>
+                        <p>Start your journey with these beginner-friendly strength exercises.</p>
+                    </div>
+                    <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                </div>
+                <div class="workout-card">
+                    <img src="{% static 'images/workout2.jpg' %}" alt="Workout 2">
+                    <div class="workout-info">
+                        <h4>Cardio Blast</h4>
+                        <p>Get your heart pumping with this high-intensity cardio workout.</p>
+                    </div>
+                    <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                </div>
+                <div class="workout-card">
+                    <img src="{% static 'images/workout3.jpg' %}" alt="Workout 3">
+                    <div class="workout-info">
+                        <h4>Full-Body Yoga</h4>
+                        <p>Relax and stretch with a full-body yoga routine.</p>
+                    </div>
+                    <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                </div>
+            </div>
+            <div class="all-workouts-button-container">
+                <a class="view-all-workouts-btn" href="{% url 'workouts-dashboard' %}">All Workouts <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

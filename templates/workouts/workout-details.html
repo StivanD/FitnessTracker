@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <section class="workout-details">
+        <div class="container">
+            <div class="workout-detail-content">
+                <div class="workout-image">
+                    <img src="{% static 'images/workout1.jpg' %}" alt="Workout 1">
+                </div>
+                <div class="workout-info">
+                    <h4>Beginner Strength Training</h4>
+                    <p class="workout-category">Category: <span>Strength</span></p>
+                    <p class="workout-description">
+                        This beginner strength training workout is designed to build your foundation. You'll be guided
+                        through key exercises to help you gain strength and confidence.
+                    </p>
+
+                    <h5>Workout Overview</h5>
+                    <ul>
+                        <li><strong>Duration:</strong> 30 minutes</li>
+                        <li><strong>Difficulty:</strong> Beginner</li>
+                        <li><strong>Equipment Needed:</strong> Dumbbells, Resistance Bands</li>
+                        <li><strong>Calories Burned:</strong> ~200 kcal</li>
+                    </ul>
+
+                    <h5>Workout Breakdown</h5>
+                    <p>This workout is divided into three main phases: Warm-up, Strength Exercises, and Cool-down.</p>
+                    <ol>
+                        <li><strong>Warm-up (5 minutes)</strong> - Light cardio and dynamic stretches to prepare your
+                            body for the workout.
+                        </li>
+                        <li><strong>Strength Training (20 minutes)</strong> - A series of resistance exercises targeting
+                            the major muscle groups. Focus on form and controlled movements.
+                        </li>
+                        <li><strong>Cool-down (5 minutes)</strong> - Static stretches to reduce muscle tightness and
+                            improve flexibility.
+                        </li>
+                    </ol>
+
+                    <h5>Detailed Exercise List</h5>
+                    <ul>
+                        <li><strong>Squats</strong> - 3 sets of 12 reps. Strengthen the legs, glutes, and core.</li>
+                        <li><strong>Push-ups</strong> - 3 sets of 10 reps. Target the chest, shoulders, and triceps.
+                        </li>
+                        <li><strong>Plank</strong> - 3 sets of 30 seconds. Engage the core, shoulders, and glutes.</li>
+                        <li><strong>Dumbbell Rows</strong> - 3 sets of 12 reps. Focus on the back and biceps.</li>
+                    </ul>
+
+                    <h5>Instructor Tips</h5>
+                    <p><strong>Form is Key:</strong> Make sure to keep your back straight during squats and rows. A
+                        slight bend in your knees during push-ups will reduce strain on your shoulders.</p>
+                    <p><strong>Common Mistakes:</strong> Avoid arching your back during planks or letting your knees
+                        cave in during squats.</p>
+
+                    <h5>Benefits of This Workout</h5>
+                    <ul>
+                        <li><strong>Increased Strength:</strong> Build muscle and strength, especially in the lower body
+                            and upper body.
+                        </li>
+                        <li><strong>Improved Posture:</strong> Targeting the core and back muscles helps improve your
+                            posture.
+                        </li>
+                        <li><strong>Boosted Confidence:</strong> As you see progress, your strength and confidence will
+                            grow.
+                        </li>
+                    </ul>
+
+                    <h5>What to Expect</h5>
+                    <p>After completing this workout, you should feel a sense of accomplishment, a bit of muscle
+                        soreness (especially if you're new to strength training), and a boost in overall energy
+                        levels.</p>
+
+                    <h5>Instructor</h5>
+                    <p>John Doe - Certified Personal Trainer with 5 years of experience in strength training. John
+                        specializes in helping beginners start their fitness journey and providing them with the tools
+                        for long-term success.</p>
+
+                    <a class="back-to-workouts-btn" onclick="goBack()">Back to Workouts</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}

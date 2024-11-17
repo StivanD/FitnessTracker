@@ -1,0 +1,236 @@
+/* Responsive Design */
+@media screen and (max-width: 1150px) {
+    /* WORKOUTS DASHBOARD */
+    .not-spaced {
+        gap: 2.5rem;
+    }
+
+    .search-filter-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .search-bar input {
+        max-width: 50%;
+    }
+
+    /* WORKOUT DETAILS */
+    .workout-image {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 885px) {
+    .category-item {
+        min-width: 80%;
+        max-height: 300px;
+    }
+
+    .workout-grid {
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .workout-card {
+        min-width: 80%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .nav-links a {
+        font-size: 1.8vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* NAVBAR AND HOMEPAGE */
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem; /* Space between items */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .nav-links.show,
+    .nav-login-register-logout.show {
+        transform: translateX(0);
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        list-style: none;
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        color: white;
+        text-decoration: none;
+        padding: 0.8rem;
+        transition: color 0.5s ease, font-size 0.3s ease;
+    }
+
+    .main-links {
+        flex-grow: 0;
+    }
+
+    .main-links a:hover {
+        color: #f04;
+        font-size: 1.6rem;
+    }
+
+    .nav-login-register-logout {
+        margin: 0;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1010;
+    }
+
+    .hamburger .bar {
+        width: 25px;
+        height: 3px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 6rem 0;
+    }
+
+    .hero .cta-btn {
+        display: inline-block;
+        margin-top: 1.5rem; /* Add spacing above the button */
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        margin: 0 auto 1.5rem;
+        max-width: 90%;
+    }
+
+    /* Features Section */
+    .features .feature-container {
+        justify-content: center;
+        gap: 0.3rem;
+    }
+
+    .features .feature-container .feature {
+        flex: 1 1 100%; /* Each feature takes up 100% of the container width */
+    }
+
+    .features .feature h3 {
+        font-size: 1.5rem;
+    }
+
+    .features .feature p {
+        font-size: 1rem;
+    }
+
+    .hero .cta-btn:hover {
+        background-color: #d03b2f;
+    }
+
+    /* WORKOUTS PAGE */
+    .category-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-description {
+        font-size: 2.5vw;
+    }
+
+    .workout-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .workout-card {
+        min-width: 80%;
+        margin-bottom: 2rem;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    .category-description {
+        font-size: 3vw;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    /* HOMEPAGE */
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero .cta-btn {
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* FOOTER */
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    /* WORKOUTS PAGE */
+    .workouts-hero .hero-content h2{
+        font-size: 2rem;
+    }
+
+    .workouts-hero .hero-content p{
+        font-size: 1rem;
+    }
+
+    .workout-card {
+        min-width: 90%;
+        margin-bottom: 2rem;
+    }
+
+    .category-item {
+        max-width: 60%;
+    }
+
+    .category-description {
+        font-size: 3.5vw;
+    }
+
+    /* WORKOUTS DASHBOARD */
+    .search-bar {
+        max-width: 100%;
+    }
+
+    .search-bar input {
+        max-width: 30%;
+    }
+}
