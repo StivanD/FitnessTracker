@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <script src="https://kit.fontawesome.com/64727f0e11.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <p class="logo-title">Fitness Tracker</p>
+                <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <div class="nav-links">
+                <div class="main-links">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}">Home</a></li>
+                        <li><a href="/workouts">Workouts</a></li>
+                        <li><a href="/meals">Meals</a></li>
+                        <li><a href="/progress">Progress</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="nav-login-register">
+                    <ul>
+                        {% if user.is_authenticated %}
+                            <li><a href="/logout">Logout</a></li>
+                        {% else %}
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+
+    </nav>
+</header>
+<script src="{% static 'scripts/navbar.js' %}"></script>
+<main>
+    <section class="hero">
+        <img class="fitness-banner-img" src="{% static 'images/fitness-banner2.jpg' %}" alt="">
+        <div class="container">
+            <h2>Track Your Fitness. Achieve Your Goals.</h2>
+            <p>Your personalized fitness journey starts here. Monitor workouts, log meals, and track progress all in one
+                place.</p>
+            <a href="#" class="cta-btn">Get Started</a>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <div class="feature-container">
+                <div class="feature">
+                    <h3>Track Your Workouts</h3>
+                    <p>Log and track all your workouts to see your progress and improve over time.</p>
+                </div>
+                <div class="feature">
+                    <h3>Monitor Your Diet</h3>
+                    <p>Keep track of your meals and ensure you're fueling your body for success.</p>
+                </div>
+                <div class="feature">
+                    <h3>Measure Your Progress</h3>
+                    <p>Track your physical progress with graphs and stats to stay motivated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Fitness Tracker. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
