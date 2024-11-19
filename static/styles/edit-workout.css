@@ -1,0 +1,92 @@
+/* Edit Workout Section */
+.edit-workout {
+    padding: 2rem 0;
+    background-image: url('../images/gym-background3.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.edit-workout::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
+    z-index: 1;
+}
+
+.edit-workout .edit-workout-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+.edit-workout .edit-workout-image {
+    width: 40%;
+}
+
+.edit-workout .edit-workout-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.edit-workout .workout-image-input {
+    margin-top: 10px;
+    display: block;
+}
+
+.edit-workout .edit-workout-info {
+    width: 55%;
+}
+
+.edit-workout .edit-workout-info h2 {
+    margin-bottom: 1rem;
+    color: #fff; /* Change to white */
+}
+
+/* Form Group Styling */
+.edit-workout .form-group {
+    margin-bottom: 1rem;
+}
+
+.edit-workout .form-group label {
+    font-weight: bold;
+    color: #fff; /* Change label color to white */
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.edit-workout .form-group input,
+.edit-workout .form-group select,
+.edit-workout .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.edit-workout .btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #ff0044; /* Change button color */
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.edit-workout .btn:hover {
+    background-color: #e2003b; /* Hover effect for buttons */
+}
+

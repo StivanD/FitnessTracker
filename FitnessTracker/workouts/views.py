@@ -13,3 +13,7 @@ class WorkoutsDashboardView(TemplateView):
 
 class WorkoutDetailsView(TemplateView):
     template_name = 'workouts/workout-details.html'
+
+
+class EditWorkoutView(TemplateView):
+    template_name = 'workouts/edit-workout.html'

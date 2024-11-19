@@ -1,5 +1,9 @@
 /* Workout Dashboard Section */
 /* Search and Filter Section */
+.fixed-height-workouts {
+    min-height: 700px;
+}
+
 .search-filter-container {
     display: flex;
     justify-content: space-between;

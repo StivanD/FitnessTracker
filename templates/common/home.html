@@ -2,36 +2,39 @@
 {% load static %}
 
 {% block content %}
-<main>
-    <section class="hero">
-        <div class="hero-image-container">
-            <img class="fitness-banner-img" src="{% static 'images/fitness-banner.jpg' %}" alt="">
-        </div>
-        <div class="hero-content-container container">
-            <h2>Track Your Fitness. Achieve Your Goals.</h2>
-            <p>Your personalized fitness journey starts here. Monitor workouts, log meals, and track progress all in one
-                place.</p>
-            <a href="#" class="cta-btn">Get Started</a>
-        </div>
-    </section>
-    <section class="features">
-        <div class="container">
-            <div class="feature-container">
-                <div class="feature">
-                    <h3>Track Your Workouts</h3>
-                    <p>Log and track all your workouts to see your progress and improve over time.</p>
-                </div>
-                <div class="feature">
-                    <h3>Monitor Your Diet</h3>
-                    <p>Keep track of your meals and ensure you're fueling your body for success.</p>
-                </div>
-                <div class="feature">
-                    <h3>Measure Your Progress</h3>
-                    <p>Track your physical progress with graphs and stats to stay motivated.</p>
+    <main>
+        <section class="hero">
+            <div class="hero-image-container">
+                <img class="fitness-banner-img" src="{% static 'images/fitness-banner.jpg' %}" alt="">
+            </div>
+            <div class="hero-content-container container">
+                <h2>Track Your Fitness. Achieve Your Goals.</h2>
+                <p>
+                    Your personalized fitness journey starts here. Monitor workouts, log meals, and track progress all
+                    in
+                    one
+                    place.
+                </p>
+            </div>
+        </section>
+        <section class="features">
+            <div class="container">
+                <div class="feature-container">
+                    <div class="feature">
+                        <h3>Track Your Workouts</h3>
+                        <p>Log and track all your workouts to see your progress and improve over time.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Monitor Your Diet</h3>
+                        <p>Keep track of your meals and ensure you're fueling your body for success.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Measure Your Progress</h3>
+                        <p>Track your physical progress with graphs and stats to stay motivated.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-</main>
+    </main>
 {% endblock %}

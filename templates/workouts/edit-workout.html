@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section class="edit-workout">
+    <div class="container">
+        <div class="edit-workout-content">
+            <div class="edit-workout-info">
+                <h2>Edit Workout: Beginner Strength Training</h2>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <!-- Workout Name -->
+                    <div class="form-group">
+                        <label for="workout_name">Workout Name</label>
+                        <input type="text" id="workout_name" name="workout_name" value="Beginner Strength Training" required>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category">
+                            <option value="strength" selected>Strength</option>
+                            <option value="cardio">Cardio</option>
+                            <option value="yoga">Yoga</option>
+                        </select>
+                    </div>
+
+                    <!-- Workout Description -->
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="4" required>This beginner strength training workout is designed to build your foundation...</textarea>
+                    </div>
+
+                    <!-- Workout Overview -->
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <input type="number" id="duration" name="duration" value="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty</label>
+                        <select id="difficulty" name="difficulty">
+                            <option value="beginner" selected>Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="equipment">Equipment Needed</label>
+                        <input type="text" id="equipment" name="equipment" value="Dumbbells, Resistance Bands" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="calories_burned">Calories Burned (kcal)</label>
+                        <input type="number" id="calories_burned" name="calories_burned" value="200" required>
+                    </div>
+
+                    <!-- Workout Breakdown -->
+                    <div class="form-group">
+                        <label for="warm_up">Warm-up</label>
+                        <textarea id="warm_up" name="warm_up" rows="3" required>5 minutes of light cardio and dynamic stretches...</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="strength_training">Strength Training</label>
+                        <textarea id="strength_training" name="strength_training" rows="3" required>A series of resistance exercises...</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="cool_down">Cool-down</label>
+                        <textarea id="cool_down" name="cool_down" rows="3" required>5 minutes of static stretches...</textarea>
+                    </div>
+
+                    <!-- Detailed Exercise List -->
+                    <div class="form-group">
+                        <label for="exercise_list">Exercises</label>
+                        <textarea id="exercise_list" name="exercise_list" rows="5" required>Squats - 3 sets of 12 reps. Push-ups - 3 sets of 10 reps. Plank - 3 sets of 30 seconds...</textarea>
+                    </div>
+
+                    <!-- Instructor Tips -->
+                    <div class="form-group">
+                        <label for="tips">Tips</label>
+                        <textarea id="tips" name="tips" rows="3" required>Form is key! Keep your back straight during squats...</textarea>
+                    </div>
+
+                    <!-- Benefits of the Workout -->
+                    <div class="form-group">
+                        <label for="benefits">Benefits</label>
+                        <textarea id="benefits" name="benefits" rows="3" required>Increased strength, improved posture, boosted confidence...</textarea>
+                    </div>
+
+                    <!-- What to Expect -->
+                    <div class="form-group">
+                        <label for="expectations">Expectations</label>
+                        <textarea id="expectations" name="expectations" rows="3" required>After completing this workout, you should feel a sense of accomplishment...</textarea>
+                    </div>
+
+                    <!-- Instructor Info -->
+                    <div class="form-group">
+                        <label for="instructor">Creator Name</label>
+                        <input type="text" id="instructor" name="instructor" value="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructor_bio">Creator Bio</label>
+                        <textarea id="instructor_bio" name="instructor_bio" rows="3" required>John Doe - Certified Personal Trainer with 5 years of experience...</textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

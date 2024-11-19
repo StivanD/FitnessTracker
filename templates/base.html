@@ -24,7 +24,7 @@
                         <li><a href="{% url 'workouts' %}">Workouts</a></li>
                         <li><a href="#">Meals</a></li>
                         <li><a href="/progress">Progress</a></li>
-                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="{% url 'profile-details' %}">Profile</a></li>
                     </ul>
                 </div>
                 <div class="nav-login-register-logout">
@@ -32,8 +32,8 @@
                         {#                        {% if user.is_authenticated %}#}
                         <li><a href="/logout">Logout</a></li>
                         {#                        {% else %}#}
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Register</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
                         {#                        {% endif %}#}
                     </ul>
                 </div>

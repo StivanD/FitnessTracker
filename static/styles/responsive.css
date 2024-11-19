@@ -18,6 +18,12 @@
     .workout-image {
         display: none;
     }
+
+    /* EDIT WORKOUT PAGE */
+    .edit-workout .edit-workout-image,
+    .edit-workout .edit-workout-info {
+        width: 85%;
+    }
 }
 
 @media screen and (max-width: 885px) {
@@ -175,6 +181,41 @@
         margin-bottom: 2rem;
     }
 
+    /* AUTH FORMS PAGES */
+    .edit-profile-container,
+    .edit-workout-container {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+
+    .btn-login,
+    .btn-register {
+        font-size: 0.9rem;
+    }
+
+    /* EDIT WORKOUT PAGE */
+    .edit-workout .edit-workout-content {
+        flex-direction: column;
+    }
+
+    .edit-workout .edit-workout-image,
+    .edit-workout .edit-workout-info {
+        width: 100%;
+    }
+
+    .profile-section .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-section .profile-info {
+        padding: 1rem;
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -237,4 +278,22 @@
     .search-bar input {
         max-width: 30%;
     }
+
+    /* AUTH FORMS PAGE */
+    .auth-container {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .auth-container h2,
+    .form-group label,
+    .auth-container a {
+        color: #fff;
+    }
+}
+
+@media screen and (max-width:320px) {
+     .profile-header img {
+         display: none;
+     }
 }

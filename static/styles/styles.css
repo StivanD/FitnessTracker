@@ -8,6 +8,12 @@
 @import 'workouts-dashboard.css';
 @import 'workout-details.css';
 
+@import 'auth_forms.css';
+
+@import 'profile-details.css';
+
+@import 'edit-workout.css';
+
 @import 'footer.css';
 
 @import 'responsive.css';
