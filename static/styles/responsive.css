@@ -225,6 +225,10 @@
         font-size: 3.5vw;
     }
 
+    .view-all-workouts-btn {
+        font-size: 1.2rem;
+    }
+
     /* WORKOUTS DASHBOARD */
     .search-bar {
         max-width: 100%;
