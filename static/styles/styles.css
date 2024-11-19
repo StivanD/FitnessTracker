@@ -4,15 +4,17 @@
 
 @import 'homepage.css';
 
-@import 'workouts.css';
-@import 'workouts-dashboard.css';
-@import 'workout-details.css';
+@import 'workouts/workouts.css';
+@import 'workouts/workouts-dashboard.css';
+@import 'workouts/workout-details.css';
+@import 'workouts/create-workout.css';
+@import 'workouts/edit-workout.css';
 
 @import 'auth_forms.css';
 
-@import 'profile-details.css';
-
-@import 'edit-workout.css';
+@import 'profiles/profile-details.css';
+@import 'profiles/edit-profile.css';
+@import 'profiles/change-password.css';
 
 @import 'footer.css';
 

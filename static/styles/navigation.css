@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Inconsolata:wght@200..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Sour Gummy", sans-serif;
+    font-weight: 700;
+}
+
 .logo {
     display: flex;
     justify-content: space-evenly;
@@ -7,7 +14,11 @@
 }
 
 .logo .logo-title {
-    font-size: 1.4em;
+    font-family: "Sour Gummy", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2em;
 }
 
 .navbar-container {

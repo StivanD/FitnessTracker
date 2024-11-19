@@ -15,5 +15,9 @@ class WorkoutDetailsView(TemplateView):
     template_name = 'workouts/workout-details.html'
 
 
+class CreateWorkoutView(TemplateView):
+    template_name = 'workouts/create-workout.html'
+
+
 class EditWorkoutView(TemplateView):
     template_name = 'workouts/edit-workout.html'
