@@ -43,11 +43,34 @@
     font-size: 1rem;
 }
 
-.workout-card.active {
-    display: flex;
-}
-
 .not-spaced {
     justify-content: flex-start;
     gap: 3.2rem;
+}
+
+.workout-btns {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.workout-btns a {
+    font-size: 1.2rem;
+    padding: 0.8rem 0.5rem;
+    background-color: #f04;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.workout-btns a:hover {
+    background-color: #fff;
+    color: #ff0044;
+    border: 1px solid black;
 }

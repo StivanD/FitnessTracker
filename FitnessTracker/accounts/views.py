@@ -21,3 +21,7 @@ class ProfileDetailsView(TemplateView):
 
 class ChangePasswordView(TemplateView):
     template_name = "profiles/change-password.html"
+
+
+class ProgressPage(TemplateView):
+    template_name = "profiles/progress.html"
