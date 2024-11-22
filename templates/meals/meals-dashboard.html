@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="meals-section">
+        <div class="container">
+            <h2>Your Meals</h2>
+            <div class="add-meal">
+                <a href="{% url 'add-meal' %}" class="btn-add-meal">Add New Meal</a>
+            </div>
+            <div class="meals-list">
+                <!-- Example Meal Card -->
+                <div class="meal-card">
+                    <h3>Grilled Chicken Salad</h3>
+                    <p><strong>Calories:</strong> 350 kcal</p>
+                    <p><strong>Ingredients:</strong> Chicken, Lettuce, Tomato, Cucumber, Olive Oil</p>
+                    <p><strong>Additional notes:</strong></p>
+                    <p><strong>Created At:</strong> Nov 19, 2024, 10:30 AM</p>
+                    <p><strong>Last Updated:</strong> Nov 19, 2024, 12:00 PM</p>
+
+                    <div class="meal-actions">
+                        <a href="{% url 'edit-meal' %}" class="btn-edit">Edit</a>
+                        <a href="{% url 'remove-meal' %}" class="btn-remove">Remove</a>
+                    </div>
+                </div>
+                <!-- Repeat Meal Cards -->
+            </div>
+        </div>
+    </section>
+{% endblock %}

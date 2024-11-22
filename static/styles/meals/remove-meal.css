@@ -1,0 +1,59 @@
+.remove-meal-section {
+    width: 100%;
+    z-index: 10;
+}
+
+.remove-meal-section .container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.remove-meal-section h2 {
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.remove-meal-section .action-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.remove-meal-section .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.5s ease;
+}
+
+.remove-meal-section .btn-cancel {
+    background-color: #787878;
+    color: white;
+    text-decoration: none;
+}
+
+.remove-meal-section .btn-cancel:hover {
+    background-color: #fff;
+    color: #787878;
+    border: 1px solid black;
+}
+
+.remove-meal-section .btn-remove {
+    background-color: #ff0044;
+    color: white;
+    border: none;
+    height: 100%;
+}
+
+.remove-meal-section .btn-remove:hover {
+    background-color: #fff;
+    color: #ff0044;
+    border: 1px solid black;
+}

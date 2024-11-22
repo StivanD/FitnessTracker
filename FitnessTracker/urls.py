@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('FitnessTracker.common.urls')),
     path('workouts/', include('FitnessTracker.workouts.urls')),
-    path('accounts/', include('FitnessTracker.accounts.urls'))
+    path('accounts/', include('FitnessTracker.accounts.urls')),
+    path('meals', include('FitnessTracker.meals.urls'))
 ]

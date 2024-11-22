@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="add-meal-section">
+        <div class="container">
+            <h2>Add a New Meal</h2>
+            <form action="#" method="POST">
+                <!-- Meal Name -->
+                <div class="form-group">
+                    <label for="meal-name">Meal Name</label>
+                    <input type="text" id="meal-name" name="meal_name" placeholder="Enter meal name" required>
+                </div>
+
+                <!-- Calories -->
+                <div class="form-group">
+                    <label for="meal-calories">Calories (kcal)</label>
+                    <input type="number" id="meal-calories" name="calories" placeholder="Enter calorie count" required>
+                </div>
+
+                <!-- Ingredients -->
+                <div class="form-group">
+                    <label for="meal-ingredients">Ingredients</label>
+                    <textarea id="meal-ingredients" name="ingredients"
+                              placeholder="Enter ingredients, separated by commas" rows="4" required></textarea>
+                </div>
+
+                <!-- Additional Notes -->
+                <div class="form-group">
+                    <label for="meal-notes">Additional Notes (Optional)</label>
+                    <textarea id="meal-notes" name="notes" placeholder="Add any notes or comments about the meal"
+                              rows="3"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">Add Meal</button>
+            </form>
+            <div class="back-to-meals">
+                <a href="#" onclick="goBack()" class="btn-back">Back to Meals</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}

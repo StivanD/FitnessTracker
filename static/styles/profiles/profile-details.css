@@ -1,14 +1,21 @@
 /* Profile Section */
-.profile-section {
-    padding: 2rem 0;
+.profile-main {
+    min-height: 100vh;
     background-image: url('../../images/gym-background3.jpg'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.profile-section::after {
+.profile-section {
+    padding: 2rem 0;
+}
+
+.profile-main::after {
     content: '';
     position: absolute;
     top: 0;
@@ -94,6 +101,7 @@
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .profile-actions .btn {

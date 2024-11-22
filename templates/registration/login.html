@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="auth-section">
-    <div class="auth-container">
-        <h2>Login</h2>
-        <form action="#" method="POST">
-            <div class="form-group">
-                <label for="username">Username or Email</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+    <main class="profile-main">
+        <section class="auth-section">
+            <div class="auth-container">
+                <h2>Login</h2>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username or Email</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username or email"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn-login btn-primary">Login</button>
+                </form>
+                <p class="auth-helper">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit" class="btn-login btn-primary">Login</button>
-        </form>
-        <p class="auth-helper">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
-    </div>
-</section>
+        </section>
+    </main>
 {% endblock %}

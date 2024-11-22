@@ -135,10 +135,22 @@
     margin-bottom: 1.5rem;
 }
 
+.workout-page-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.workout-page-btns a {
+    width: auto;
+}
+
 .workout-details-link,
 .view-all-workouts-btn {
     font-size: 1.2rem;
-    margin: auto 3rem 1rem 1rem;
+    margin: auto 0 1rem;
     padding: 0.8rem 1.5rem;
     background-color: #f04;
     color: #fff;

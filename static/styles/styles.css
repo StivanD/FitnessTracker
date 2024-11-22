@@ -1,6 +1,6 @@
-@import 'reset.css';
+@import 'common/reset.css';
 
-@import 'navigation.css';
+@import 'common/navigation.css';
 
 @import 'homepage.css';
 
@@ -16,6 +16,11 @@
 @import 'profiles/edit-profile.css';
 @import 'profiles/change-password.css';
 
-@import 'footer.css';
+@import 'meals/meals-dashboard.css';
+@import 'meals/add-meal.css';
+@import 'meals/edit-meal.css';
+@import 'meals/remove-meal.css';
 
-@import 'responsive.css';
+@import 'common/footer.css';
+
+@import 'common/responsive.css';

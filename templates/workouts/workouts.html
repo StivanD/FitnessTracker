@@ -58,7 +58,10 @@
                         <h4>Beginner Strength Training</h4>
                         <p>Start your journey with these beginner-friendly strength exercises.</p>
                     </div>
-                    <a href="{% url 'workout-details' %}" class="workout-details-link">View Workout</a>
+                    <div class="workout-page-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-details-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="workout-details-link">Edit Workout</a>
+                    </div>
                 </div>
                 <div class="workout-card">
                     <img src="{% static 'images/workout2.jpg' %}" alt="Workout 2">
@@ -66,7 +69,10 @@
                         <h4>Cardio Blast</h4>
                         <p>Get your heart pumping with this high-intensity cardio workout.</p>
                     </div>
-                    <a href="{% url 'workout-details' %}" class="workout-details-link">View Workout</a>
+                    <div class="workout-page-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-details-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="workout-details-link">Edit Workout</a>
+                    </div>
                 </div>
                 <div class="workout-card">
                     <img src="{% static 'images/workout3.jpg' %}" alt="Workout 3">
@@ -74,11 +80,15 @@
                         <h4>Full-Body Yoga</h4>
                         <p>Relax and stretch with a full-body yoga routine.</p>
                     </div>
-                    <a href="{% url 'workout-details' %}" class="workout-details-link">View Workout</a>
+                    <div class="workout-page-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-details-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="workout-details-link">Edit Workout</a>
+                    </div>
                 </div>
             </div>
             <div class="all-workouts-button-container">
-                <a class="view-all-workouts-btn" href="{% url 'workouts-dashboard' %}">All Workouts <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="view-all-workouts-btn" href="{% url 'workouts-dashboard' %}">All Workouts <i
+                        class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>

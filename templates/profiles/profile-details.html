@@ -3,44 +3,48 @@
 {% load static %}
 
 {% block content %}
-<section class="profile-section">
-    <div class="profile-container">
-        <!-- Profile Header -->
-        <div class="profile-header">
-            <img src="{% static 'images/profile-placeholder.png' %}" alt="Profile Picture" class="profile-picture">
-            <div class="profile-header-content">
-                <h2>Steven Dimitrov</h2>
-                <p>Member since: January 2024</p>
+    <main class="profile-main">
+        <section class="profile-section">
+            <div class="profile-container">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <img src="{% static 'images/profile-placeholder.png' %}" alt="Profile Picture"
+                         class="profile-picture">
+                    <div class="profile-header-content">
+                        <h2>Steven Dimitrov</h2>
+                        <p>Member since: January 2024</p>
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="profile-info">
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li><strong>Username:</strong> johndoe</li>
+                        <li><strong>Email:</strong> johndoe@example.com</li>
+                        <li><strong>Age:</strong> 25</li>
+                        <li><strong>Short Description:</strong> Enthusiastic about fitness and arm wrestling.</li>
+                    </ul>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <ul>
+                        <li><strong>Last Completed Training:</strong> Cardio Blast - 15/11/2024</li>
+                        <li><strong>Total Workouts Completed:</strong> 35</li>
+                        <li><strong>Preferred Training Style:</strong> Strength Training</li>
+                    </ul>
+                </div>
+
+                <!-- Profile Actions -->
+                <div class="profile-actions">
+                    <a href="{% url 'edit-profile' %}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'change-password' %}" class="btn btn-danger">Change Password</a>
+                    <a href="#" class="btn btn-danger">Logout</a>
+                </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <!-- Personal Information -->
-        <div class="profile-info">
-            <h3>Personal Information</h3>
-            <ul>
-                <li><strong>Username:</strong> johndoe</li>
-                <li><strong>Email:</strong> johndoe@example.com</li>
-                <li><strong>Age:</strong> 25</li>
-                <li><strong>Short Description:</strong> Enthusiastic about fitness and arm wrestling.</li>
-            </ul>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="recent-activity">
-            <h3>Recent Activity</h3>
-            <ul>
-                <li><strong>Last Completed Training:</strong> Cardio Blast - 15/11/2024</li>
-                <li><strong>Total Workouts Completed:</strong> 35</li>
-                <li><strong>Preferred Training Style:</strong> Strength Training</li>
-            </ul>
-        </div>
-
-        <!-- Profile Actions -->
-        <div class="profile-actions">
-            <a href="{% url 'edit-profile' %}" class="btn btn-primary">Edit Profile</a>
-            <a href="{% url 'change-password' %}" class="btn btn-danger">Change Password</a>
-            <a href="#" class="btn btn-danger">Logout</a>
-        </div>
-    </div>
-</section>
 {% endblock %}

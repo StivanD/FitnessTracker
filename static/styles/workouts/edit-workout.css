@@ -43,6 +43,9 @@
 
 .edit-workout .edit-workout-info {
     width: 55%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+    padding: 2rem;
 }
 
 .edit-workout .edit-workout-info h2 {

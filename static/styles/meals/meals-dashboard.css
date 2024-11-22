@@ -1,0 +1,89 @@
+.meals-section {
+    padding: 2rem 0;
+}
+
+.meals-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.meals-section h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.meals-list {
+    margin: 2rem 0;
+}
+
+.meal-card {
+    background: white;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.meal-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.meal-card p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.meal-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.meal-actions a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.5s ease;
+}
+
+.btn-edit {
+    background-color: #ffa500;
+}
+
+.btn-edit:hover {
+    background-color: #fff;
+    color: #ffa500;
+    border: 1px solid black;
+}
+
+.btn-remove {
+    background-color: #ff0044;
+}
+
+.btn-remove:hover {
+    background-color: #fff;
+    color: #ff0044;
+    border: 1px solid black;
+}
+
+.add-meal .btn-add-meal {
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.add-meal .btn-add-meal:hover {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid black;
+}
