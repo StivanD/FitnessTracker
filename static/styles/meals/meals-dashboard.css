@@ -53,12 +53,12 @@
 }
 
 .btn-edit {
-    background-color: #ffa500;
+    background-color: #007bff;
 }
 
 .btn-edit:hover {
     background-color: #fff;
-    color: #ffa500;
+    color: #0056b3;
     border: 1px solid black;
 }
 

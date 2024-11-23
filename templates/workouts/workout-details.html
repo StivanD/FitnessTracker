@@ -9,7 +9,7 @@
                 <div class="workout-image">
                     <img src="{% static 'images/workout1.jpg' %}" alt="Workout 1">
                 </div>
-                <div class="workout-info">
+                <div class="workout-info workout-details-info">
                     <h4>Beginner Strength Training</h4>
                     <p class="workout-category">Category: <span>Strength</span></p>
                     <p class="workout-description">
@@ -77,7 +77,10 @@
                         specializes in helping beginners start their fitness journey and providing them with the tools
                         for long-term success.</p>
 
-                    <a class="back-to-workouts-btn" onclick="goBack()">Back to Workouts</a>
+                    <div class="workout-details-buttons">
+                        <a class="back-to-workouts-btn" href="{% url 'edit-workout' %}">Edit Workout</a>
+                        <a class="back-to-workouts-btn" onclick="goBack()">Back to Workouts</a>
+                    </div>
                 </div>
             </div>
         </div>

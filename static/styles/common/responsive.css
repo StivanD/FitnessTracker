@@ -24,6 +24,16 @@
     .edit-workout .edit-workout-info {
         width: 85%;
     }
+
+    /* PROGRESS LOG PAGE */
+    .progress-log-section {
+        min-width: 80%;
+    }
+
+    /* PROGRESS LOG HISTORY PAGE */
+    .exercise-logs-section {
+        min-width: 80%;
+    }
 }
 
 @media screen and (max-width: 885px) {
@@ -215,6 +225,12 @@
 
     .profile-section .profile-info {
         padding: 1rem;
+    }
+
+    /* PROGRESS LOG PAGE */
+    .progress-log-section {
+        min-width: 100%;
+        padding: 0;
     }
 }
 

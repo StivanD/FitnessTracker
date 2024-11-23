@@ -1,0 +1,72 @@
+.exercise-logs-section {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    min-width: 60%;
+}
+
+.exercise-logs-section .container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.exercise-logs-section h2 {
+    margin-bottom: 1.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.logs-table thead {
+    background-color: #ff0044;
+    color: white;
+}
+
+.logs-table th,
+.logs-table td {
+    padding: 0.8rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.logs-table tr:nth-child(odd) {
+    color: #f2f2f2;
+}
+
+.logs-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.logs-table th {
+    font-weight: bold;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #ff0044;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+}
+
+.btn-back:hover {
+    background-color: #fff;
+    color: #ff0044;
+    text-decoration: none;
+}

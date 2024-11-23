@@ -22,6 +22,10 @@
 @import 'meals/edit-meal.css';
 @import 'meals/remove-meal.css';
 
+@import 'progress/progress.css';
+@import 'progress/log-progress.css';
+@import 'progress/log-history.css';
+
 @import 'common/footer.css';
 
 @import 'common/responsive.css';
