@@ -104,6 +104,12 @@
     flex-wrap: wrap;
 }
 
+.profile-actions a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile-actions .btn {
     flex: 1;
     padding: 0.8rem;

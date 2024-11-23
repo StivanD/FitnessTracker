@@ -9,6 +9,7 @@
 @import 'workouts/workout-details.css';
 @import 'workouts/create-workout.css';
 @import 'workouts/edit-workout.css';
+@import 'workouts/delete-workout.css';
 
 @import 'auth_forms.css';
 

@@ -1,0 +1,69 @@
+.delete-workout-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.delete-workout-section .container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.delete-workout-section h2 {
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.delete-workout-section .workout-details {
+    margin-bottom: 2rem;
+}
+
+.delete-workout-section .workout-details h3 {
+    color: #fff;
+}
+
+.delete-workout-section .workout-details p {
+    color: #fff;
+}
+
+.delete-workout-section .action-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.delete-workout-section .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-workout-section .btn-cancel {
+    background-color: #787878;
+    color: #fff;
+    text-decoration: none;
+}
+
+.delete-workout-section .btn-cancel:hover {
+    background-color: #fff;
+    color: #787878;
+}
+
+.delete-workout-section .btn-remove {
+    background-color: #ff0044;
+    color: white;
+    border: none;
+    height: 100%;
+}
+
+.delete-workout-section .btn-remove:hover {
+    background-color: #fff;
+    color: #ff0044;
+}
