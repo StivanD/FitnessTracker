@@ -75,8 +75,8 @@
 .add-meal .btn-add-meal {
     text-decoration: none;
     padding: 0.8rem 2rem;
-    background-color: #333;
-    color: white;
+    background-color: #ff0044;
+    color: #fff;
     font-weight: bold;
     border-radius: 4px;
     transition: background-color 0.3s;
@@ -84,6 +84,6 @@
 
 .add-meal .btn-add-meal:hover {
     background-color: #fff;
-    color: #333;
+    color: #ff0044;
     border: 1px solid black;
 }

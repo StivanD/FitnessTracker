@@ -69,31 +69,42 @@
     color: #fff;
 }
 
-/* Profile Information and Recent Activity */
-.profile-info, .recent-activity {
+/* Profile Information */
+.profile-info,
+.created-workouts {
     margin-bottom: 2rem;
     text-align: left;
 }
 
-.profile-info h3, .recent-activity h3 {
+.profile-info h3,
+.created-workouts h3 {
     margin-bottom: 1rem;
     color: #fff;
     border-bottom: 1px solid #ddd;
     padding-bottom: 0.5rem;
 }
 
-.profile-info ul, .recent-activity ul {
+.profile-info ul,
+.recent-activity ul,
+.created-workouts ul {
     list-style: none;
     padding: 0;
 }
 
-.profile-info li, .recent-activity li {
+.profile-info li,
+.created-workouts li {
     margin-bottom: 0.5rem;
     color: #fff;
 }
 
-.profile-info strong, .recent-activity strong {
+.created-workouts li a {
+    text-decoration: none;
     color: #fff;
+    transition: color 0.3s;
+}
+
+.created-workouts li a:hover {
+    color: #ff0044;
 }
 
 /* Action Buttons */

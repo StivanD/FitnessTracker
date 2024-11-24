@@ -13,3 +13,7 @@ class LogProgressView(TemplateView):
 
 class LogHistoryView(TemplateView):
     template_name = 'progress/log-history.html'
+
+
+class LogExerciseView(TemplateView):
+    template_name = 'progress/log-exercise.html'
