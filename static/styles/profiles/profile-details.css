@@ -97,15 +97,38 @@
     color: #fff;
 }
 
-.created-workouts li a {
+.created-workouts-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3rem;
+}
+
+.created-workouts-content .view-all-user-workouts-btn {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #ff0044;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.created-workouts li a,
+.created-workouts-content .view-all-user-workouts-btn {
     text-decoration: none;
     color: #fff;
-    transition: color 0.3s;
+    transition: color 0.5s;
 }
 
 .created-workouts li a:hover {
     color: #ff0044;
 }
+
+.created-workouts-content .view-all-user-workouts-btn:hover {
+    color: #ff0044;
+    background-color: #fff;
+    transition: background-color 0.5s;
+}
+
 
 /* Action Buttons */
 .profile-actions {

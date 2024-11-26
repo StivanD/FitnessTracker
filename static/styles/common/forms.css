@@ -1,0 +1,5 @@
+.form-group textarea {
+    overflow: auto;
+    min-height: 50px;
+    resize: vertical;
+}
