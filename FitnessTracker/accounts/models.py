@@ -54,6 +54,12 @@ class Profile(models.Model):
         on_delete=models.CASCADE
     )
 
+    profile_picture = models.ImageField(
+        upload_to='profile_pics/',
+        null=True,
+        blank=True
+    )
+
     age = models.IntegerField()
 
     height = models.FloatField()

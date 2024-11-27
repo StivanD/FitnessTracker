@@ -8,9 +8,9 @@
 
                 <div class="action-buttons">
                     <a class="btn btn-cancel" onclick="goBack()">Cancel</a>
-                    <form action="#" method="POST">
+                    <form id="logout-form" action="{% url 'logout' %}" method="POST">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-remove">Log Out</button>
+                        <button type="button" class="btn btn-remove">Log Out</button>
                     </form>
                 </div>
             </div>
@@ -21,5 +21,14 @@
         function goBack() {
             window.history.back();
         }
+
+        // Prevent the default form submission when the button is clicked
+        document.getElementById('logout-button').addEventListener('click', function() {
+            // Optionally, show a confirmation dialog
+            if (confirm("Are you sure you want to log out?")) {
+                // If the user confirms, submit the form manually
+                document.getElementById('logout-form').submit();
+            }
+        });
     </script>
 {% endblock %}

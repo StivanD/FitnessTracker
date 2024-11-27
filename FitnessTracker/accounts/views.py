@@ -23,10 +23,6 @@ class UserLoginView(LoginView):
     redirect_authenticated_user = True
 
 
-class UserLogoutView(LogoutView):
-    template_name = 'registration/logout-confirm.html'
-
-
 class EditProfileView(TemplateView):
     template_name = "profiles/edit-profile.html"
 

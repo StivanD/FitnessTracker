@@ -95,6 +95,21 @@
     color: #f04
 }
 
+form button[type="submit"].btn-logout {
+    border: none;
+    border-radius: 0.2em;
+    padding: 0.8rem;
+    background-color: #ff0044;
+    color: #fff;
+    transition: background-color 0.5s;
+}
+
+form button[type="submit"].btn-logout:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #ff0044;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
