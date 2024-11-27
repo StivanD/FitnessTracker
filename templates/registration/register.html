@@ -5,24 +5,36 @@
         <section class="auth-section">
             <div class="auth-container">
                 <h2>Register</h2>
-                <form action="#" method="POST">
+                <form method="POST">
+                    {% csrf_token %}
+
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        {{ form.username.label }}
+                        {{ form.username }}
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        {{ form.email.label }}
+                        {{ form.email }}
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        {{ form.first_name.label }}
+                        {{ form.first_name }}
                     </div>
                     <div class="form-group">
-                        <label for="confirm_password">Confirm Password</label>
-                        <input type="password" id="confirm_password" name="confirm_password"
+                        {{ form.last_name.label }}
+                        {{ form.last_name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+                        <input type="password" name="password1" id="{{ form.password1.id_for_label }}"
+                               placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+                        <input type="password" name="password2" id="{{ form.password2.id_for_label }}"
                                placeholder="Confirm your password" required>
                     </div>
+
                     <button type="submit" class="btn-register btn-primary">Register</button>
                 </form>
                 <p class="auth-helper">Already have an account? <a href="{% url 'login' %}">Login</a></p>

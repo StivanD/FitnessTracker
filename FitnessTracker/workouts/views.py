@@ -29,3 +29,7 @@ class DeleteWorkoutView(TemplateView):
 
 class UserWorkoutsView(TemplateView):
     template_name = 'workouts/user-workouts.html'
+
+
+class UserFavouriteWorkoutsView(TemplateView):
+    template_name = 'workouts/favourite-workouts.html'

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <script src="{% static 'scripts/workouts-dashboard.js' %}"></script>
+    <section class="featured-workouts fixed-height-workouts">
+        <div class="container">
+            <h3>Your Favourite Workouts</h3>
+
+            <div class="search-filter-container">
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search workouts..."/>
+                    <button type="button" id="searchButton">Search</button>
+                </div>
+                <!-- Category Filter -->
+                <div class="category-filter">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="strength">Strength</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="flexibility">Flexibility</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="workout-grid not-spaced">
+                <div class="workout-card" data-category="strength">
+                    <img src="{% static 'images/workout1.jpg' %}" alt="Workout 1">
+                    <div class="workout-info">
+                        <h4>Beginner Strength Training</h4>
+                        <p>Start your journey with these beginner-friendly strength exercises.</p>
+                    </div>
+                    <div class="workout-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="edit-workout-btn">Edit Workout</a>
+                        <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete Workout</a>
+                    </div>
+                </div>
+                <div class="workout-card" data-category="cardio">
+                    <img src="{% static 'images/workout2.jpg' %}" alt="Workout 2">
+                    <div class="workout-info">
+                        <h4>Cardio Blast</h4>
+                        <p>Get your heart pumping with this high-intensity cardio workout.</p>
+                    </div>
+                    <div class="workout-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="edit-workout-btn">Edit Workout</a>
+                        <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete Workout</a>
+                    </div>
+                </div>
+                <div class="workout-card" data-category="flexibility">
+                    <img src="{% static 'images/workout3.jpg' %}" alt="Workout 3">
+                    <div class="workout-info">
+                        <h4>Mega</h4>
+                        <p>Relax and stretch with a full-body yoga routine.</p>
+                    </div>
+                    <div class="workout-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="edit-workout-btn">Edit Workout</a>
+                        <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete Workout</a>
+                    </div>
+                </div>
+                <div class="workout-card" data-category="flexibility">
+                    <img src="{% static 'images/workout3.jpg' %}" alt="Workout 3">
+                    <div class="workout-info">
+                        <h4>Full-Body Yoga</h4>
+                        <p>Relax and stretch with a full-body yoga routine.</p>
+                    </div>
+                    <div class="workout-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="edit-workout-btn">Edit Workout</a>
+                        <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete Workout</a>
+                    </div>
+                </div>
+                <div class="workout-card" data-category="flexibility">
+                    <img src="{% static 'images/workout3.jpg' %}" alt="Workout 3">
+                    <div class="workout-info">
+                        <h4>Mega</h4>
+                        <p>Relax and stretch with a full-body yoga routine.</p>
+                    </div>
+                    <div class="workout-btns">
+                        <a href="{% url 'workout-details' %}" class="workout-link">View Workout</a>
+                        <a href="{% url 'edit-workout' %}" class="edit-workout-btn">Edit Workout</a>
+                        <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete Workout</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock %}

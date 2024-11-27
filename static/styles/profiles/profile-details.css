@@ -101,6 +101,8 @@
     display: flex;
     justify-content: space-between;
     gap: 0.3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
 }
 
 .created-workouts-content .view-all-user-workouts-btn {
