@@ -10,48 +10,42 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" value="johndoe@example.com" required>
-                </div>
-
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" value="dimitrovv27" required>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" value="{{ form.username.value }}" required>
                 </div>
-                
-                <!-- Full Name -->
+
+                <!-- Email -->
                 <div class="form-group">
-                    <label for="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" value="John Doe" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" value="{{ form.email.value }}" required>
                 </div>
 
                 <!-- Height -->
                 <div class="form-group">
                     <label for="height">Height (cm)</label>
-                    <input type="number" id="height" name="height" placeholder="Enter your height in centimeters" value="180" required>
+                    <input type="number" id="height" name="height" placeholder="Enter your height in centimeters" value="{{ form.height.value }}" required>
                 </div>
 
                 <!-- Weight -->
                 <div class="form-group">
-                    <label for="height">Weight (kg)</label>
-                    <input type="number" id="weight" name="weight" placeholder="Enter your weight in kilograms" value="88" required>
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight" placeholder="Enter your weight in kilograms" value="{{ form.weight.value }}" required>
                 </div>
-                
+
                 <!-- Short Description -->
                 <div class="form-group">
-                    <label for="description">Short Description</label>
-                    <textarea id="description" name="description" rows="3" placeholder="Write a short description about yourself">Fitness enthusiast with a love for challenges!</textarea>
+                    <label for="short_description">Short Description</label>
+                    <textarea id="short_description" name="short_description" rows="3" placeholder="Write a short description about yourself">{{ form.short_description.value }}</textarea>
                 </div>
-                
+
                 <!-- Profile Picture -->
                 <div class="form-group">
                     <label for="profile_picture">Profile Picture</label>
                     <input type="file" id="profile_picture" name="profile_picture">
                 </div>
-                
+
                 <button type="submit" class="save-profile-changes-btn">Save Changes</button>
             </form>
         </div>

@@ -12,9 +12,9 @@ def create_profile(sender, instance: UserModel, created: bool, **kwargs):
     if created:
         Profile.objects.create(
             user=instance,
-            age=0,
             height=0,
             weight=0,
             short_description="",
             profile_picture=None
         )
+

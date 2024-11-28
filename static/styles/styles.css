@@ -17,7 +17,7 @@
 
 @import 'profiles/profile-details.css';
 @import 'profiles/edit-profile.css';
-@import 'profiles/change-password.css';
+@import 'profiles/reset-password.css';
 
 @import 'meals/meals-dashboard.css';
 @import 'meals/add-meal.css';

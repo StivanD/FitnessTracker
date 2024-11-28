@@ -8,11 +8,17 @@
             <div class="profile-container">
                 <!-- Profile Header -->
                 <div class="profile-header">
-                    <img src="{% static 'images/profile-placeholder.png' %}" alt="Profile Picture"
-                         class="profile-picture">
+                    <img
+                            {% if user.profile.profile_picture %}
+                                src="{{ user.profile.profile_picture.url }}"
+                            {% else %}
+                                src="{% static 'images/profile-placeholder.png' %}"
+                            {% endif %}
+                                alt="Profile Picture"
+                                class="profile-picture">
                     <div class="profile-header-content">
-                        <h2>Steven Dimitrov</h2>
-                        <p>Member since: January 2024</p>
+                        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                        <p>Member since: {{ user.date_joined|date:"d F Y" }}</p>
                     </div>
                 </div>
 
@@ -20,12 +26,28 @@
                 <div class="profile-info">
                     <h3>Personal Information</h3>
                     <ul>
-                        <li>Username: johndoe</li>
-                        <li>Email: johndoe@example.com</li>
-                        <li>Age: 25</li>
-                        <li>Height: 180cm</li>
-                        <li>Weight: 88kg</li>
-                        <li>Short Description: Enthusiastic about fitness and arm wrestling.</li>
+                        <li>Username: {{ user.username }}</li>
+                        {% if is_own_profile %}
+                            <li>Email: {{ user.email }}</li>
+                        {% endif %}
+                        <li>Age: {{ user.age|default:"N/A" }}</li>
+                        <li>
+                            Height:
+                            {% if user.profile.height and user.profile.height != 0 %}
+                                {{ user.profile.height }} cm
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </li>
+                        <li>
+                            Weight:
+                            {% if user.profile.weight and user.profile.weight != 0 %}
+                                {{ user.profile.weight }} kg
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </li>
+                        <li>Short Description: {{ user.profile.short_description|default:"N/A" }}</li>
                     </ul>
                 </div>
 
@@ -43,12 +65,14 @@
                     </div>
                 </div>
 
-                <!-- Profile Actions -->
-                <div class="profile-actions">
-                    <a href="{% url 'edit-profile' %}" class="btn btn-primary">Edit Profile</a>
-                    <a href="{% url 'change-password' %}" class="btn btn-danger">Change Password</a>
-                </div>
-            </div>
+                {% if is_own_profile %}
+                    <!-- Profile Actions -->
+                    <div class="profile-actions">
+                        <a href="{% url 'edit-profile' %}" class="btn btn-primary">Edit Profile</a>
+                        <a href="{% url 'reset-password' %}" class="btn btn-danger">Change Password</a>
+                    </div>
+                    </div>
+                {% endif %}
         </section>
     </main>
 

@@ -16,6 +16,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="flatpickr" level="application" />
+    <orderEntry type="library" name="64727f0e11" level="application" />
     <orderEntry type="library" name="64727f0e11" level="application" />
   </component>
   <component name="TemplatesService">

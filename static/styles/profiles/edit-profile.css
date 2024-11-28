@@ -61,6 +61,22 @@
     color: #333;
 }
 
+.form-group input[type="date"] {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Focus state */
+.form-group input[type="date"]:focus {
+    outline: none;
+    border-color: #ff0044;
+    box-shadow: 0 0 5px rgba(255, 0, 68, 0.6);
+}
+
 .save-profile-changes-btn {
     display: block;
     width: 100%;
