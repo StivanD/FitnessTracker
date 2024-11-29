@@ -6,85 +6,65 @@
     <section class="workout-details">
         <div class="container">
             <div class="workout-detail-content">
+                <!-- Workout Image -->
                 <div class="workout-image">
-                    <img src="{% static 'images/workout1.jpg' %}" alt="Workout 1">
+                    <img src="{{ workout.image.url }}" alt="{{ workout.name }}">
                 </div>
-                <div class="workout-info workout-details-info">
-                    <h4>Beginner Strength Training</h4>
-                    <p class="workout-category">Category: <span>Strength</span></p>
-                    <p class="workout-description">
-                        This beginner strength training workout is designed to build your foundation. You'll be guided
-                        through key exercises to help you gain strength and confidence.
-                    </p>
 
+                <!-- Workout Info -->
+                <div class="workout-info workout-details-info">
+                    <!-- Workout Name -->
+                    <h4>{{ workout.name }}</h4>
+                    <!-- Workout Category -->
+                    <p class="workout-category">Category: <span>{{ workout.category.name }}</span></p>
+                    <!-- Short Description -->
+                    <p class="workout-description">{{ workout.short_description }}</p>
+
+                    <!-- Workout Overview -->
                     <h5>Workout Overview</h5>
                     <ul>
-                        <li><strong>Duration:</strong> 30 minutes</li>
-                        <li><strong>Difficulty:</strong> Beginner</li>
-                        <li><strong>Equipment Needed:</strong> Dumbbells, Resistance Bands</li>
-                        <li><strong>Calories Burned:</strong> ~200 kcal</li>
+                        <li><strong>Duration:</strong> {{ workout.duration }}</li>
+                        <li><strong>Difficulty:</strong> {{ workout.difficulty }}</li>
+                        <li><strong>Equipment Needed:</strong> {{ workout.equipment }}</li>
+                        <li><strong>Calories Burned:</strong> ~{{ workout.calories_burned }} kcal</li>
                     </ul>
 
+                    <!-- Workout Breakdown -->
                     <h5>Workout Breakdown</h5>
-                    <p>This workout is divided into three main phases: Warm-up, Strength Exercises, and Cool-down.</p>
-                    <ol>
-                        <li><strong>Warm-up (5 minutes)</strong> - Light cardio and dynamic stretches to prepare your
-                            body for the workout.
-                        </li>
-                        <li><strong>Strength Training (20 minutes)</strong> - A series of resistance exercises targeting
-                            the major muscle groups. Focus on form and controlled movements.
-                        </li>
-                        <li><strong>Cool-down (5 minutes)</strong> - Static stretches to reduce muscle tightness and
-                            improve flexibility.
-                        </li>
-                    </ol>
+                    <p>{{ workout.workout_breakdown }}</p>
 
+                    <!-- Detailed Exercise List -->
                     <h5>Detailed Exercise List</h5>
-                    <ul>
-                        <li><strong>Squats</strong> - 3 sets of 12 reps. Strengthen the legs, glutes, and core.</li>
-                        <li><strong>Push-ups</strong> - 3 sets of 10 reps. Target the chest, shoulders, and triceps.
-                        </li>
-                        <li><strong>Plank</strong> - 3 sets of 30 seconds. Engage the core, shoulders, and glutes.</li>
-                        <li><strong>Dumbbell Rows</strong> - 3 sets of 12 reps. Focus on the back and biceps.</li>
-                    </ul>
+                    <p>{{ workout.exercise_list }}</p>
 
+                    <!-- Creator Tips -->
                     <h5>Creator Tips</h5>
-                    <p><strong>Form is Key:</strong> Make sure to keep your back straight during squats and rows. A
-                        slight bend in your knees during push-ups will reduce strain on your shoulders.</p>
-                    <p><strong>Common Mistakes:</strong> Avoid arching your back during planks or letting your knees
-                        cave in during squats.</p>
+                    <p>{{ workout.creator_tips }}</p>
 
+                    <!-- Benefits of This Workout -->
                     <h5>Benefits of This Workout</h5>
-                    <ul>
-                        <li><strong>Increased Strength:</strong> Build muscle and strength, especially in the lower body
-                            and upper body.
-                        </li>
-                        <li><strong>Improved Posture:</strong> Targeting the core and back muscles helps improve your
-                            posture.
-                        </li>
-                        <li><strong>Boosted Confidence:</strong> As you see progress, your strength and confidence will
-                            grow.
-                        </li>
-                    </ul>
+                    <p>{{ workout.benefits }}</p>
 
+                    <!-- What to Expect -->
                     <h5>What to Expect</h5>
-                    <p>After completing this workout, you should feel a sense of accomplishment, a bit of muscle
-                        soreness (especially if you're new to strength training), and a boost in overall energy
-                        levels.</p>
+                    <p>{{ workout.what_to_expect }}</p>
 
+                    <!-- Creator -->
                     <h5>Creator</h5>
-                    <p>John Doe - Certified Personal Trainer with 5 years of experience in strength training. John
-                        specializes in helping beginners start their fitness journey and providing them with the tools
-                        for long-term success.</p>
+                    <p>{{ workout.creator.get_full_name }} - {{ workout.creator.profile.short_description }}</p>
 
+                    <!-- Action Buttons -->
                     <div class="workout-details-buttons">
-                        <a class="back-to-workouts-btn" href="{% url 'edit-workout' %}">Edit Workout</a>
+                        {% if request.user == workout.creator %}
+                            <a class="back-to-workouts-btn" href="{% url 'edit-workout' %}">Edit Workout</a>
+                        {% endif %}
                         <a class="back-to-workouts-btn" onclick="goBack()">Back to Workouts</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <script>
         // Function to go back to the previous page
         function goBack() {

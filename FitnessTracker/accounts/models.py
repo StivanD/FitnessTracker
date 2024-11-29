@@ -82,7 +82,7 @@ class Profile(models.Model):
     weight = models.FloatField()
 
     short_description = models.CharField(
-        max_length=30,
+        max_length=150,
         null=True,
         blank=True
     )
