@@ -72,6 +72,22 @@
     justify-content: center;
 }
 
+.creator-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #ff0044;
+    transition: color 0.3s;
+}
+
+.creator-link:hover {
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.creator-link-bigger {
+    font-size: inherit;
+}
+
 /* Back to Workouts Button */
 .back-to-workouts-btn {
     display: inline-block;

@@ -77,7 +77,7 @@ class Workout(models.Model):
     )
 
     creator = models.ForeignKey(
-        to=User,
+        to=FitnessTracker.accounts.models.AppUser,
         on_delete=models.CASCADE,
         related_name="workouts"
     )

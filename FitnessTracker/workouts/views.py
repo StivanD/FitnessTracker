@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, DetailView, ListView
 
-from FitnessTracker.workouts.models import WorkoutCategory, Workout
+from FitnessTracker.workouts.models import WorkoutCategory, Workout, User
 
 
 # Create your views here.
@@ -27,6 +27,11 @@ class WorkoutsDashboardView(ListView):
 
     def get_queryset(self):
         return Workout.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = WorkoutCategory.objects.all()
+        return context
 
 
 class WorkoutDetailsView(LoginRequiredMixin, DetailView):
@@ -56,8 +61,23 @@ class DeleteWorkoutView(TemplateView):
     template_name = 'workouts/delete-workout.html'
 
 
-class UserWorkoutsView(TemplateView):
+class UserWorkoutsListView(ListView):
+    model = Workout
     template_name = 'workouts/user-workouts.html'
+    context_object_name = 'workouts'
+
+    def get_queryset(self):
+        # Filter workouts by the specified username
+        username = self.kwargs.get('username')
+        self.profile_user = get_object_or_404(User, username=username)
+        return Workout.objects.filter(creator=self.profile_user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile_user'] = self.profile_user
+        context['is_own_profile'] = self.request.user == self.profile_user
+        context['categories'] = WorkoutCategory.objects.all()
+        return context
 
 
 class UserFavouriteWorkoutsView(TemplateView):

@@ -53,15 +53,24 @@
 
                 <!-- Created Workouts -->
                 <div class="created-workouts">
-                    <h3>Created Workouts</h3>
+                    <div class="created-workouts-header">
+                        <h3>Created Workouts</h3>
+                        <a href="{% url 'create-workout' %}">Create workout</a>
+                    </div>
                     <div class="created-workouts-content">
-                        <ul>
-                            <li>No workouts.</li>
-                            <li><a href="#">Basic Strength Training</a></li>
-                            <li><a href="#">Yoga For Beginners</a></li>
-                            <li><a href="#">Cardio Beast</a></li>
-                        </ul>
-                        <a class="view-all-user-workouts-btn" href="{% url 'user-workouts' %}">View All</a>
+                        {% if user.workouts.exists %}
+                            <ul>
+                                {% for workout in user.workouts.all %}
+                                    <li><a href="{% url 'workout-details' workout.id %}">{{ workout.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <ul>
+                                <li>No workouts.</li>
+                            </ul>
+                        {% endif %}
+                        <a class="view-all-user-workouts-btn" href="{% url 'user-workouts' user.username %}">View
+                            All</a>
                     </div>
                 </div>
 

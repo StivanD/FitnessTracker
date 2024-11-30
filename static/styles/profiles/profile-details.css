@@ -76,12 +76,15 @@
     text-align: left;
 }
 
-.profile-info h3,
-.created-workouts h3 {
+.profile-info h3 {
     margin-bottom: 1rem;
     color: #fff;
     border-bottom: 1px solid #ddd;
     padding-bottom: 0.5rem;
+}
+
+.created-workouts h3 {
+    color: #fff
 }
 
 .profile-info ul,
@@ -96,6 +99,28 @@
     margin-bottom: 0.5rem;
     color: #fff;
 }
+
+.created-workouts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.created-workouts-header a {
+    text-decoration: none;
+    color: #ff0044;
+    transition: color 0.3s;
+}
+
+.created-workouts-header a:hover {
+    color: #007bff;
+}
+
 
 .created-workouts-content {
     display: flex;

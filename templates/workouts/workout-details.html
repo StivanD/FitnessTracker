@@ -51,7 +51,9 @@
 
                     <!-- Creator -->
                     <h5>Creator</h5>
-                    <p>{{ workout.creator.get_full_name }} - {{ workout.creator.profile.short_description }}</p>
+                    <p><a class="creator-link"
+                          href="{% url 'profile-details' workout.creator.username %}">{{ workout.creator.username }}</a>
+                        - {{ workout.creator.profile.short_description }}</p>
 
                     <!-- Action Buttons -->
                     <div class="workout-details-buttons">
