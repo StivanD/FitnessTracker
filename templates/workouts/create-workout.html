@@ -1,119 +1,120 @@
 {% extends 'base.html' %}
 
-{% load static %}
-
 {% block content %}
-    <section class="create-workout">
-        <div class="container">
-            <div class="create-workout-content">
-                <h4>Create a New Workout</h4>
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
+<section class="create-workout">
+    <div class="container">
+        <div class="create-workout-content">
+            <h4>Create a New Workout</h4>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
 
-                    <!-- Workout Name -->
-                    <div class="form-group">
-                        <label for="name">Workout Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter workout name" required>
+                <div class="form-group">
+                    <label for="name">Workout Name</label>
+                    {{ form.name }}
+                    <div class="error">
+                        {{ form.name.errors }}
                     </div>
+                </div>
 
-                    <!-- Category -->
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <select name="category" id="category">
-                            <option value="Strength">Strength</option>
-                            <option value="Cardio">Cardio</option>
-                            <option value="Flexibility">Flexibility</option>
-                        </select>
+                <div class="form-group">
+                    <label for="short_description">Short Description</label>
+                    {{ form.short_description }}
+                    <div class="error">
+                        {{ form.short_description.errors }}
                     </div>
+                </div>
 
-                    <!-- Description -->
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" rows="4" placeholder="Describe the workout"
-                                  required></textarea>
+                <div class="form-group">
+                    <label for="duration">Duration (minutes)</label>
+                    {{ form.duration }}
+                    <div class="error">
+                        {{ form.duration.errors }}
                     </div>
+                </div>
 
-                    <!-- Duration -->
-                    <div class="form-group">
-                        <label for="duration">Duration (minutes)</label>
-                        <input type="number" id="duration" name="duration" placeholder="e.g., 30" required>
+                <div class="form-group">
+                    <label for="difficulty">Difficulty</label>
+                    {{ form.difficulty }}
+                    <div class="error">
+                        {{ form.difficulty.errors }}
                     </div>
+                </div>
 
-                    <!-- Difficulty -->
-                    <div class="form-group">
-                        <label for="difficulty">Difficulty</label>
-                        <select name="difficulty" id="difficulty">
-                            <option value="Beginner">Beginner</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Advanced">Advanced</option>
-                        </select>
+                <div class="form-group">
+                    <label for="equipment_needed">Equipment Needed</label>
+                    {{ form.equipment_needed }}
+                    <div class="error">
+                        {{ form.equipment_needed.errors }}
                     </div>
+                </div>
 
-                    <!-- Equipment Needed -->
-                    <div class="form-group">
-                        <label for="equipment">Equipment Needed</label>
-                        <input type="text" id="equipment" name="equipment"
-                               placeholder="e.g., Dumbbells, Resistance Bands" required>
+                <div class="form-group">
+                    <label for="calories_burned">Calories Burned (kcal)</label>
+                    {{ form.calories_burned }}
+                    <div class="error">
+                        {{ form.calories_burned.errors }}
                     </div>
+                </div>
 
-                    <!-- Calories Burned -->
-                    <div class="form-group">
-                        <label for="calories">Calories Burned (kcal)</label>
-                        <input type="number" id="calories" name="calories" placeholder="e.g., 200" required>
+                <div class="form-group">
+                    <label for="workout_breakdown">Workout Breakdown</label>
+                    {{ form.workout_breakdown }}
+                    <div class="error">
+                        {{ form.workout_breakdown.errors }}
                     </div>
+                </div>
 
-                    <!-- Warm-up -->
-                    <div class="form-group">
-                        <label for="warmup">Warm-up</label>
-                        <textarea id="warmup" name="warmup" rows="4" placeholder="Describe the warm-up phase"
-                                  required></textarea>
+                <div class="form-group">
+                    <label for="exercise_list">Detailed Exercise List</label>
+                    {{ form.exercise_list }}
+                    <div class="error">
+                        {{ form.exercise_list.errors }}
                     </div>
+                </div>
 
-                    <!-- Workout Breakdown -->
-                    <div class="form-group">
-                        <label for="workout_breakdown">Workout Breakdown</label>
-                        <textarea id="workout_breakdown" name="workout_breakdown" rows="4"
-                                  placeholder="Breakdown of the workout phases" required></textarea>
+                <div class="form-group">
+                    <label for="creator_tips">Creator Tips</label>
+                    {{ form.creator_tips }}
+                    <div class="error">
+                        {{ form.creator_tips.errors }}
                     </div>
+                </div>
 
-                    <!-- Detailed Exercise List -->
-                    <div class="form-group">
-                        <label for="exercise_list">Detailed Exercise List</label>
-                        <textarea id="exercise_list" name="exercise_list" rows="4"
-                                  placeholder="List of exercises and sets/reps" required></textarea>
+                <div class="form-group">
+                    <label for="benefits">Benefits</label>
+                    {{ form.benefits }}
+                    <div class="error">
+                        {{ form.benefits.errors }}
                     </div>
+                </div>
 
-                    <!-- Tips -->
-                    <div class="form-group">
-                        <label for="tips">Instructor Tips</label>
-                        <textarea id="tips" name="tips" rows="4" placeholder="Provide tips for users"
-                                  required></textarea>
+                <div class="form-group">
+                    <label for="expectations">What to Expect</label>
+                    {{ form.expectations }}
+                    <div class="error">
+                        {{ form.expectations.errors }}
                     </div>
+                </div>
 
-                    <!-- Benefits -->
-                    <div class="form-group">
-                        <label for="benefits">Benefits</label>
-                        <textarea id="benefits" name="benefits" rows="4"
-                                  placeholder="Highlight the benefits of this workout" required></textarea>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    {{ form.category }}
+                    <div class="error">
+                        {{ form.category.errors }}
                     </div>
+                </div>
 
-                    <!-- Expectations -->
-                    <div class="form-group">
-                        <label for="expectations">What to Expect</label>
-                        <textarea id="expectations" name="expectations" rows="4"
-                                  placeholder="Describe what users can expect after completing the workout"
-                                  required></textarea>
+                <div class="form-group">
+                    <label for="image">Upload Workout Image</label>
+                    {{ form.image }}
+                    <div class="error">
+                        {{ form.image.errors }}
                     </div>
+                </div>
 
-                    <!-- Upload Image -->
-                    <div class="form-group">
-                        <label for="image">Upload Workout Image</label>
-                        <input type="file" name="image" id="image" class="form-control">
-                    </div>
-
-                    <button type="submit" class="create-workout-btn">Create Workout</button>
-                </form>
-            </div>
+                <button type="submit" class="create-workout-btn">Create Workout</button>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}

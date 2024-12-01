@@ -10,7 +10,6 @@ class UserRegisterForm(UserCreationForm):
     date_of_birth = forms.DateField(
         widget=DateInput(attrs={
             'type': 'date',
-            'class': 'form-control',  # Add your custom class here
             'placeholder': 'MM/DD/YYYY',
         }),
         required=True,
@@ -42,14 +41,6 @@ class UserRegisterForm(UserCreationForm):
                     'placeholder': 'Enter your last name',
                 }
             ),
-            # 'date_of_birth': DateField(
-            #     widget=forms.DateInput(attrs={
-            #         'type': 'date',
-            #         'placeholder': 'MM/DD/YYYY'
-            #     }),
-            #     required=True,
-            #     label='Date of Birth'
-            # ),
             'password1': PasswordInput(
                 attrs={
                     'placeholder': 'Enter your password',

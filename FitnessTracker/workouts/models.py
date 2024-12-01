@@ -96,7 +96,8 @@ class Workout(models.Model):
     image = models.ImageField(
         upload_to="workouts/",
         null=True,
-        blank=True
+        blank=True,
+        default="default_images/default-workout-image.jpg"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

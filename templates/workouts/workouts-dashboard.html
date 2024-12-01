@@ -37,7 +37,7 @@
                 <div class="workout-btns">
                     <a href="{% url 'workout-details' workout.pk %}" class="workout-link">View Workout</a>
                     {% if request.user == workout.creator %}
-                    <a href="{% url 'edit-workout' %}" class="edit-workout-btn">Edit Workout</a>
+                    <a href="{% url 'edit-workout' workout.pk %}" class="edit-workout-btn">Edit Workout</a>
                     <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete Workout</a>
                     {% endif %}
                 </div>

@@ -23,7 +23,13 @@
                     <!-- Workout Overview -->
                     <h5>Workout Overview</h5>
                     <ul>
-                        <li><strong>Duration:</strong> {{ workout.duration }}</li>
+                        <li><strong>Duration:</strong> {{ workout.duration }}
+                        {% if workout.duration != 1 %}
+                         minutes
+                        {% else %}
+                         minute
+                        {% endif %}
+                        </li>
                         <li><strong>Difficulty:</strong> {{ workout.difficulty }}</li>
                         <li><strong>Equipment Needed:</strong> {{ workout.equipment }}</li>
                         <li><strong>Calories Burned:</strong> ~{{ workout.calories_burned }} kcal</li>
@@ -47,7 +53,7 @@
 
                     <!-- What to Expect -->
                     <h5>What to Expect</h5>
-                    <p>{{ workout.what_to_expect }}</p>
+                    <p>{{ workout.expectations }}</p>
 
                     <!-- Creator -->
                     <h5>Creator</h5>
@@ -58,7 +64,7 @@
                     <!-- Action Buttons -->
                     <div class="workout-details-buttons">
                         {% if request.user == workout.creator %}
-                            <a class="back-to-workouts-btn" href="{% url 'edit-workout' %}">Edit Workout</a>
+                            <a class="back-to-workouts-btn" href="{% url 'edit-workout' workout.pk %}">Edit Workout</a>
                         {% endif %}
                         <a class="back-to-workouts-btn" onclick="goBack()">Back to Workouts</a>
                     </div>

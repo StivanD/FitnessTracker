@@ -59,11 +59,9 @@ class EditProfileView(UpdateView):
         return reverse_lazy('profile-details', kwargs={'username': self.request.user.username})
 
     def form_valid(self, form):
-        # Save the changes to the Profile model
         profile = form.save(commit=False)
         profile.save()
 
-        # Save the changes to the AppUser model (email, username)
         user = self.request.user
         user.username = form.cleaned_data['username']
         user.email = form.cleaned_data['email']
@@ -86,5 +84,3 @@ class CustomPasswordResetView(PasswordChangeView):
         return super().form_valid(form)
 
 
-class ProgressPage(TemplateView):
-    template_name = "progress/progress.html"

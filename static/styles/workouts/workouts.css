@@ -100,7 +100,7 @@
 
 .workout-grid {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 2rem;
     flex-wrap: wrap;
     border-top: 3px solid #787878;

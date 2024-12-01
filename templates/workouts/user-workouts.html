@@ -6,15 +6,21 @@
     <script src="{% static 'scripts/search-bar.js' %}"></script>
     <section class="featured-workouts fixed-height-workouts">
         <div class="container">
-            <h3>
-                {% if is_own_profile %}
-                    All workouts created by you
-                {% else %}
+            {% if is_own_profile %}
+                <div class="workouts-container-head">
+                    <h3>Most Visited Workouts</h3>
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'create-workout' %}" class="create-workout-link">Create workout</a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <h3>
                     All Workouts created by
                     <a class="creator-link creator-link-bigger"
                        href="{% url 'profile-details' profile_user.username %}">{{ profile_user.username }}</a>
-                {% endif %}
-            </h3>
+                </h3>
+            {% endif %}
+
 
             <div class="search-filter-container">
                 <!-- Search Bar -->
@@ -44,9 +50,9 @@
                                 <p>{{ workout.short_description }}</p>
                             </div>
                             <div class="workout-btns">
-                                <a href="{% url 'workout-details' workout.id %}" class="workout-link">View Workout</a>
+                                <a href="{% url 'workout-details' workout.pk %}" class="workout-link">View Workout</a>
                                 {% if request.user == profile_user %}
-                                    <a href="{% url 'edit-workout' %}" class="edit-workout-btn">Edit Workout</a>
+                                    <a href="{% url 'edit-workout' workout.pk %}" class="edit-workout-btn">Edit Workout</a>
                                     <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete Workout</a>
                                 {% endif %}
                             </div>
