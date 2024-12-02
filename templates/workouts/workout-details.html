@@ -24,14 +24,14 @@
                     <h5>Workout Overview</h5>
                     <ul>
                         <li><strong>Duration:</strong> {{ workout.duration }}
-                        {% if workout.duration != 1 %}
-                         minutes
-                        {% else %}
-                         minute
-                        {% endif %}
+                            {% if workout.duration != 1 %}
+                                minutes
+                            {% else %}
+                                minute
+                            {% endif %}
                         </li>
                         <li><strong>Difficulty:</strong> {{ workout.difficulty }}</li>
-                        <li><strong>Equipment Needed:</strong> {{ workout.equipment }}</li>
+                        <li><strong>Equipment Needed:</strong> {{ workout.equipment_needed }}</li>
                         <li><strong>Calories Burned:</strong> ~{{ workout.calories_burned }} kcal</li>
                     </ul>
 
@@ -59,12 +59,15 @@
                     <h5>Creator</h5>
                     <p><a class="creator-link"
                           href="{% url 'profile-details' workout.creator.username %}">{{ workout.creator.username }}</a>
-                        - {{ workout.creator.profile.short_description }}</p>
+                        {% if workout.creator.profile.short_description %}
+                            - {{ workout.creator.profile.short_description }}</p>
+                        {% endif %}
 
                     <!-- Action Buttons -->
                     <div class="workout-details-buttons">
                         {% if request.user == workout.creator %}
                             <a class="back-to-workouts-btn" href="{% url 'edit-workout' workout.pk %}">Edit Workout</a>
+                            <a class="back-to-workouts-btn" href="{% url 'delete-workout' workout.pk %}">Delete Workout</a>
                         {% endif %}
                         <a class="back-to-workouts-btn" onclick="goBack()">Back to Workouts</a>
                     </div>

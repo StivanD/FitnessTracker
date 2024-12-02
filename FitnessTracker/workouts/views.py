@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views.generic import TemplateView, DetailView, ListView, CreateView, UpdateView
+from django.views.generic import TemplateView, DetailView, ListView, CreateView, UpdateView, DeleteView
 
 from FitnessTracker.workouts.forms import CreateWorkoutForm, EditWorkoutForm
 from FitnessTracker.workouts.models import WorkoutCategory, Workout, User
@@ -71,15 +71,29 @@ class EditWorkoutView(UpdateView):
     context_object_name = 'workout'
 
     def get_success_url(self):
-        return reverse_lazy('workout_detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('workout-details', kwargs={'pk': self.object.pk})
 
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.filter(creator=self.request.user)
 
+    def form_valid(self, form):
+        if 'image-clear' in self.request.POST:
+            form.instance.image = "default_images/default-workout-image.jpg"
 
-class DeleteWorkoutView(TemplateView):
+        return super().form_valid(form)
+
+
+class DeleteWorkoutView(DeleteView):
+    model = Workout
     template_name = 'workouts/delete-workout.html'
+    context_object_name = 'workout'
+
+    def get_queryset(self):
+        return super().get_queryset().filter(creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse('user-workouts', kwargs={'username': self.request.user.username})
 
 
 class UserWorkoutsListView(ListView):

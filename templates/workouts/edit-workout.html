@@ -8,147 +8,16 @@
             <div class="edit-workout-content">
                 <div class="edit-workout-info">
                     <h2>Edit Workout: {{ workout.name }}</h2>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
 
-                        <!-- Workout Name -->
-                        <div class="form-group">
-                            <label for="workout_name">Workout Name</label>
-                            <input type="text" id="workout_name" name="workout_name" value="{{ form.name.value }}">
-                            <div class="error">
-                                {{ form.name.errors }}
+                        {% for field in form %}
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                                <div class="error">{{ field.errors }}</div>
                             </div>
-                        </div>
-
-                        <!-- Category -->
-                        <div class="form-group">
-                            <label for="category">Category</label>
-                            <select id="category" name="category">
-                                <option value="Strength" {% if workout.category == 'Strength' %}selected{% endif %}>
-                                    Strength
-                                </option>
-                                <option value="Cardio" {% if workout.category == 'Cardio' %}selected{% endif %}>Cardio
-                                </option>
-                                <option value="Yoga" {% if workout.category == 'Yoga' %}selected{% endif %}>Yoga
-                                </option>
-                            </select>
-                            <div class="error">
-                                {{ form.category.errors }}
-                            </div>
-                        </div>
-
-                        <!-- Workout Description -->
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea id="description" name="description" rows="4"
-                                      required>{{ form.short_description.value }}</textarea>
-                            <div class="error">
-                                {{ form.short_description.errors }}
-                            </div>
-                        </div>
-
-                        <!-- Workout Overview -->
-                        <div class="form-group">
-                            <label for="duration">Duration (minutes)</label>
-                            <input type="number" id="duration" name="duration" value="{{ form.duration.value }}">
-                            <div class="error">
-                                {{ form.duration.errors }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="difficulty">Difficulty</label>
-                            <select id="difficulty" name="difficulty">
-                                <option value="Beginner" {% if workout.difficulty == 'Beginner' %}selected{% endif %}>
-                                    Beginner
-                                </option>
-                                <option value="Intermediate"
-                                        {% if workout.difficulty == 'Intermediate' %}selected{% endif %}>Intermediate
-                                </option>
-                                <option value="Advanced" {% if workout.difficulty == 'Advanced' %}selected{% endif %}>
-                                    Advanced
-                                </option>
-                            </select>
-                            <div class="error">
-                                {{ form.difficulty.errors }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="equipment">Equipment Needed</label>
-                            <input type="text" id="equipment" name="equipment"
-                                   value="{{ form.equipment_needed.value }}">
-                            <div class="error">
-                                {{ form.equipment.errors }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="calories_burned">Calories Burned (kcal)</label>
-                            <input type="number" id="calories_burned" name="calories_burned"
-                                   value="{{ form.calories_burned.value }}">
-                            <div class="error">
-                                {{ form.calories_burned.errors }}
-                            </div>
-                        </div>
-
-                        <!-- Workout Breakdown -->
-                        <div class="form-group">
-                            <label for="workout_breakdown">Workout Breakdown</label>
-                            <textarea id="workout_breakdown" name="workout_breakdown"
-                                      rows="3">{{ form.workout_breakdown.value }}</textarea>
-                            <div class="error">
-                                {{ form.workout_breakdown.errors }}
-                            </div>
-                        </div>
-
-                        <!-- Detailed Exercise List -->
-                        <div class="form-group">
-                            <label for="exercise_list">Detailed Exercise List</label>
-                            <textarea id="exercise_list" name="exercise_list"
-                                      rows="5">{{ form.exercise_list.value }}</textarea>
-                            <div class="error">
-                                {{ form.exercise_list.errors }}
-                            </div>
-                        </div>
-
-                        <!-- Creator Tips -->
-                        <div class="form-group">
-                            <label for="tips">Tips</label>
-                            <textarea id="tips" name="tips" rows="3">{{ form.creator_tips.value }}</textarea>
-                            <div class="error">
-                                {{ form.tips.errors }}
-                            </div>
-                        </div>
-
-                        <!-- Benefits of the Workout -->
-                        <div class="form-group">
-                            <label for="benefits">Benefits</label>
-                            <textarea id="benefits" name="benefits" rows="3">{{ form.benefits.value }}</textarea>
-                            <div class="error">
-                                {{ form.benefits.errors }}
-                            </div>
-                        </div>
-
-                        <!-- What to Expect -->
-                        <div class="form-group">
-                            <label for="expectations">Expectations</label>
-                            <textarea id="expectations" name="expectations"
-                                      rows="3">{{ form.expectations.value }}</textarea>
-                            <div class="error">
-                                {{ form.expectations.errors }}
-                            </div>
-                        </div>
-
-                        <!-- Change Image -->
-                        <div class="form-group">
-                            <label for="image">Change Workout Image</label>
-                            <input type="file" name="image" id="image" class="form-control">
-                            <div class="error">
-                                {{ form.image.errors }}
-                            </div>
-                        </div>
-
+                        {% endfor %}
                         <!-- Submit Button -->
                         <button type="submit" class="btn">Save Changes</button>
                     </form>

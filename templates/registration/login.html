@@ -8,13 +8,21 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="id_username">Username or Email</label>
-                        {{ form.username }}
+                        {% for field in form %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            <div class="error">{{ field.errors }}</div>
+                        {% endfor %}
                     </div>
-                    <div class="form-group">
-                        <label for="id_password">Password</label>
-                        {{ form.password }}
-                    </div>
+
+                    {% if form.non_field_errors %}
+                        <div class="error">
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
                     <button type="submit" class="btn-login btn-primary">Login</button>
                 </form>
                 <p class="auth-helper">Don't have an account? <a href="{% url 'register' %}">Register</a></p>

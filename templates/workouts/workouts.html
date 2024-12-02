@@ -46,12 +46,12 @@
                             <p>{{ workout.short_description|truncatewords:20 }}</p>
                         </div>
                         <div class="workout-page-btns">
-                            <a href="{% url 'workout-details' workout.id %}" class="workout-details-link">View
+                            <a href="{% url 'workout-details' workout.pk %}" class="workout-details-link">View
                                 Workout</a>
                             {% if workout.creator == request.user %}
                                 <a href="{% url 'edit-workout' workout.pk %}" class="workout-details-link">Edit
                                     Workout</a>
-                                <a href="{% url 'delete-workout' %}" class="workout-details-link">Delete
+                                <a href="{% url 'delete-workout' workout.pk %}" class="workout-details-link">Delete
                                     Workout</a>
                             {% endif %}
                         </div>

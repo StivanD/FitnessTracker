@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    margin: 1rem 0;
 }
 
 .auth-container {
@@ -76,4 +77,9 @@
 
 .auth-helper a:hover {
     text-decoration: underline;
+}
+
+.auth-container .error {
+    margin-bottom: 0.5rem;
+    color: #ff0044;
 }
