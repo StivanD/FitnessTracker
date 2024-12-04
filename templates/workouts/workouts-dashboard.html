@@ -3,51 +3,60 @@
 {% load static %}
 
 {% block content %}
-<script src="{% static 'scripts/search-bar.js' %}"></script>
-<section class="featured-workouts fixed-height-workouts">
-    <div class="container">
-        <h3>All Workouts</h3>
+    <script src="{% static 'scripts/search-bar.js' %}"></script>
+    <section class="featured-workouts fixed-height-workouts">
+        <div class="container">
+            <h3>All Workouts</h3>
 
-        <!-- Search and Filter Options -->
-        <div class="search-filter-container">
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search workouts..." />
-                <button type="button" id="searchButton">Search</button>
+            <!-- Search and Filter Options -->
+            <div class="search-filter-container">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search workouts..."/>
+                    <button type="button" id="searchButton">Search</button>
+                </div>
+                <div class="category-filter">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
-            <div class="category-filter">
-                <select id="categoryFilter">
-                    <option value="all">All Categories</option>
-                    {% for category in categories %}
-                        <option value="{{ category.id }}">{{ category.name }}</option>
+
+            <!-- Workout Cards -->
+            {% if workouts %}
+                <div class="workout-grid not-spaced">
+                    {% for workout in workouts %}
+                        <div class="workout-card" data-category="{{ workout.category.id }}">
+                            <img src="{{ workout.image.url }}" alt="{{ workout.name }}">
+                            {% if request.user.is_authenticated %}
+                                <button class="heart-button-favourite" data-pk="{{ workout.pk }}"
+                                        onclick="toggleFavourite(this)">
+                                    <!-- Heart Icon: Filled if the workout is in the user's favourites -->
+                                    <i class="fa{% if workout in favourite_workouts %}-solid{% else %}-regular{% endif %} fa-heart"></i>
+                                </button>
+                            {% endif %}
+                            <div class="workout-info">
+                                <h4>{{ workout.name }}</h4>
+                                <p>{{ workout.short_description }}</p>
+                            </div>
+                            <div class="workout-btns">
+                                <a href="{% url 'workout-details' workout.pk %}" class="workout-link">View Workout</a>
+                                {% if request.user == workout.creator %}
+                                    <a href="{% url 'edit-workout' workout.pk %}" class="edit-workout-btn">Edit
+                                        Workout</a>
+                                    <a href="{% url 'delete-workout' workout.pk %}" class="workout-details-link">Delete
+                                        Workout</a>
+                                {% endif %}
+                            </div>
+                        </div>
                     {% endfor %}
-                </select>
-            </div>
-        </div>
-
-        <!-- Workout Cards -->
-        {% if workouts %}
-        <div class="workout-grid not-spaced">
-            {% for workout in workouts %}
-            <div class="workout-card" data-category="{{ workout.category.id }}">
-                <img src="{{ workout.image.url }}" alt="{{ workout.name }}">
-                <div class="workout-info">
-                    <h4>{{ workout.name }}</h4>
-                    <p>{{ workout.short_description }}</p>
                 </div>
-                <div class="workout-btns">
-                    <a href="{% url 'workout-details' workout.pk %}" class="workout-link">View Workout</a>
-                    {% if request.user == workout.creator %}
-                    <a href="{% url 'edit-workout' workout.pk %}" class="edit-workout-btn">Edit Workout</a>
-                    <a href="{% url 'delete-workout' workout.pk %}" class="workout-details-link">Delete Workout</a>
-                    {% endif %}
-                </div>
-            </div>
-            {% endfor %}
+            {% else %}
+                <!-- Message When No Workouts Exist -->
+                <p>No workouts available at the moment.</p>
+            {% endif %}
         </div>
-        {% else %}
-        <!-- Message When No Workouts Exist -->
-        <p>No workouts available at the moment.</p>
-        {% endif %}
-    </div>
-</section>
+    </section>
 {% endblock %}

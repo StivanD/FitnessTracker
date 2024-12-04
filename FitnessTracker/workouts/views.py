@@ -1,10 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
+from django.views import View
 from django.views.generic import TemplateView, DetailView, ListView, CreateView, UpdateView, DeleteView
 
 from FitnessTracker.workouts.forms import CreateWorkoutForm, EditWorkoutForm
-from FitnessTracker.workouts.models import WorkoutCategory, Workout, User
+from FitnessTracker.workouts.models import WorkoutCategory, Workout, User, FavouriteWorkouts
 
 
 # Create your views here.
@@ -18,6 +20,13 @@ class WorkoutsView(TemplateView):
 
         # Fetch featured workouts (top 3 most visited)
         context['featured_workouts'] = Workout.objects.order_by('-visit_count')[:3]
+
+        # Fetch favourite workouts for the logged-in user
+        if self.request.user.is_authenticated:
+            user_favourites = FavouriteWorkouts.objects.filter(user=self.request.user).first()
+            context['favourite_workouts'] = user_favourites.workouts.all() if user_favourites else []
+        else:
+            context['favourite_workouts'] = []
 
         return context
 
@@ -33,6 +42,14 @@ class WorkoutsDashboardView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = WorkoutCategory.objects.all()
+
+        # Fetch favourite workouts for the logged-in user
+        if self.request.user.is_authenticated:
+            user_favourites = FavouriteWorkouts.objects.filter(user=self.request.user).first()
+            context['favourite_workouts'] = user_favourites.workouts.all() if user_favourites else []
+        else:
+            context['favourite_workouts'] = []
+
         return context
 
 
@@ -49,6 +66,14 @@ class WorkoutDetailsView(LoginRequiredMixin, DetailView):
             workout.save(update_fields=['visit_count'])
 
         return workout
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        user_favourites = FavouriteWorkouts.objects.filter(user=self.request.user).first()
+        context['favourite_workouts'] = user_favourites.workouts.all() if user_favourites else []
+
+        return context
 
 
 class CreateWorkoutView(CreateView):
@@ -112,8 +137,45 @@ class UserWorkoutsListView(ListView):
         context['profile_user'] = self.profile_user
         context['is_own_profile'] = self.request.user == self.profile_user
         context['categories'] = WorkoutCategory.objects.all()
+
+        user_favourites = FavouriteWorkouts.objects.filter(user=self.request.user).first()
+        context['favourite_workouts'] = user_favourites.workouts.all() if user_favourites else []
+
         return context
 
 
-class UserFavouriteWorkoutsView(TemplateView):
+class ToggleFavouriteWorkoutView(View):
+    def post(self, request, pk):
+        if not request.user.is_authenticated:
+            return JsonResponse({'error': 'Unauthorized'}, status=401)
+
+        workout = get_object_or_404(Workout, pk=pk)
+        favourite_workouts, created = FavouriteWorkouts.objects.get_or_create(user=request.user)
+
+        # Check if the workout is already in the user's favourites
+        if workout in favourite_workouts.workouts.all():
+            favourite_workouts.workouts.remove(workout)
+            action = 'removed from'
+        else:
+            favourite_workouts.workouts.add(workout)
+            action = 'added to'
+
+        # Return response indicating the action taken
+        return JsonResponse({'status': action, 'message': f'Workout {action} favourites.'})
+
+
+class UserFavouriteWorkoutsView(LoginRequiredMixin, TemplateView):
     template_name = 'workouts/favourite-workouts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_favourites = FavouriteWorkouts.objects.filter(user=self.request.user).first()
+
+        # Simply pass the user's favourite workouts
+        context['workouts'] = user_favourites.workouts.all() if user_favourites else []
+
+        context['categories'] = WorkoutCategory.objects.all()
+        context['profile_user'] = self.request.user
+
+        return context
+

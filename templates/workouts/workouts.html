@@ -41,6 +41,13 @@
                 {% for workout in featured_workouts %}
                     <div class="workout-card">
                         <img src="{{ workout.image.url }}" alt="{{ workout.name }}">
+                        {% if request.user.is_authenticated %}
+                            <button class="heart-button-favourite" data-pk="{{ workout.pk }}"
+                                    onclick="toggleFavourite(this)">
+                                <!-- Heart Icon: Filled if the workout is in the user's favourites -->
+                                <i class="fa{% if workout in favourite_workouts %}-solid{% else %}-regular{% endif %} fa-heart"></i>
+                            </button>
+                        {% endif %}
                         <div class="workout-info">
                             <h4>{{ workout.name }}</h4>
                             <p>{{ workout.short_description|truncatewords:20 }}</p>

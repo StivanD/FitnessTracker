@@ -14,7 +14,13 @@
                 <!-- Workout Info -->
                 <div class="workout-info workout-details-info">
                     <!-- Workout Name -->
-                    <h4>{{ workout.name }}</h4>
+                    <h4>{{ workout.name }}
+                        <button class="heart-button-favourite heart-inline" data-pk="{{ workout.pk }}"
+                                onclick="toggleFavourite(this)">
+                            <!-- Heart Icon: Filled if the workout is in the user's favourites -->
+                            <i class="fa{% if workout in favourite_workouts %}-solid{% else %}-regular{% endif %} fa-heart"></i>
+                        </button>
+                    </h4>
                     <!-- Workout Category -->
                     <p class="workout-category">Category: <span>{{ workout.category.name }}</span></p>
                     <!-- Short Description -->
@@ -67,7 +73,8 @@
                     <div class="workout-details-buttons">
                         {% if request.user == workout.creator %}
                             <a class="back-to-workouts-btn" href="{% url 'edit-workout' workout.pk %}">Edit Workout</a>
-                            <a class="back-to-workouts-btn" href="{% url 'delete-workout' workout.pk %}">Delete Workout</a>
+                            <a class="back-to-workouts-btn" href="{% url 'delete-workout' workout.pk %}">Delete
+                                Workout</a>
                         {% endif %}
                         <a class="back-to-workouts-btn" onclick="goBack()">Back to Workouts</a>
                     </div>

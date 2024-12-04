@@ -29,6 +29,16 @@
 .workout-info h4 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.heart-inline {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #ff0044;
 }
 
 .workout-info p {

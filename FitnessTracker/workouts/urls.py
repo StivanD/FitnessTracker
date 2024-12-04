@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from FitnessTracker.workouts.views import WorkoutsView, WorkoutsDashboardView, WorkoutDetailsView, EditWorkoutView, \
-    CreateWorkoutView, DeleteWorkoutView, UserWorkoutsListView, UserFavouriteWorkoutsView
+    CreateWorkoutView, DeleteWorkoutView, UserWorkoutsListView, UserFavouriteWorkoutsView, ToggleFavouriteWorkoutView
 
 urlpatterns = [
     path('', WorkoutsView.as_view(), name='workouts'),
@@ -10,8 +10,9 @@ urlpatterns = [
         path('details/', WorkoutDetailsView.as_view(), name='workout-details'),
         path('edit/', EditWorkoutView.as_view(), name='edit-workout'),
         path('delete/', DeleteWorkoutView.as_view(), name='delete-workout'),
+        path('toggle-favourite/', ToggleFavouriteWorkoutView.as_view(), name='toggle-favourite')
     ])),
     path('create/', CreateWorkoutView.as_view(), name='create-workout'),
     path('user-workouts/<str:username>/', UserWorkoutsListView.as_view(), name='user-workouts'),
-    path('favourite-workouts', UserFavouriteWorkoutsView.as_view(), name='favourite-workouts')
+    path('favourite-workouts/', UserFavouriteWorkoutsView.as_view(), name='favourite-workouts'),
 ]

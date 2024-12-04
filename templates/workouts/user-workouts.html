@@ -45,6 +45,11 @@
                     {% for workout in workouts %}
                         <div class="workout-card" data-category="{{ workout.category.id }}">
                             <img src="{{ workout.image.url }}" alt="{{ workout.name }}">
+                            <button class="heart-button-favourite" data-pk="{{ workout.pk }}"
+                                    onclick="toggleFavourite(this)">
+                                <!-- Heart Icon: Filled if the workout is in the user's favourites -->
+                                <i class="fa{% if workout in favourite_workouts %}-solid{% else %}-regular{% endif %} fa-heart"></i>
+                            </button>
                             <div class="workout-info">
                                 <h4>{{ workout.name }}</h4>
                                 <p>{{ workout.short_description }}</p>
@@ -52,8 +57,10 @@
                             <div class="workout-btns">
                                 <a href="{% url 'workout-details' workout.pk %}" class="workout-link">View Workout</a>
                                 {% if request.user == profile_user %}
-                                    <a href="{% url 'edit-workout' workout.pk %}" class="edit-workout-btn">Edit Workout</a>
-                                    <a href="{% url 'delete-workout' workout.pk %}" class="workout-details-link">Delete Workout</a>
+                                    <a href="{% url 'edit-workout' workout.pk %}" class="edit-workout-btn">Edit
+                                        Workout</a>
+                                    <a href="{% url 'delete-workout' workout.pk %}" class="workout-details-link">Delete
+                                        Workout</a>
                                 {% endif %}
                             </div>
                         </div>

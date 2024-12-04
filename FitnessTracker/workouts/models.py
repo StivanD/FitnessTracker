@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-import FitnessTracker.accounts.models
 from FitnessTracker.workouts.choices import WorkoutDifficultyLevels
 
 User = get_user_model()
@@ -77,7 +76,7 @@ class Workout(models.Model):
     )
 
     creator = models.ForeignKey(
-        to=FitnessTracker.accounts.models.AppUser,
+        to=User,
         on_delete=models.CASCADE,
         related_name="workouts"
     )
@@ -104,3 +103,20 @@ class Workout(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class FavouriteWorkouts(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='favourites'
+    )
+
+    workouts = models.ManyToManyField(
+        Workout,
+        blank=True,
+        related_name='favourited_by'
+    )
+
+    def __str__(self):
+        return f"{self.user.username}'s Favourites"
