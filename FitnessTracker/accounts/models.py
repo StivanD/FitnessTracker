@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator, MinValueValidator
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, AbstractUser
@@ -14,15 +15,24 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(
         max_length=100,
-        unique=True
+        unique=True,
+        validators=[
+            MinLengthValidator(2, "The username must contain at least 2 symbols!")
+        ]
     )
 
     first_name = models.CharField(
         max_length=30,
+        validators=[
+            MinLengthValidator(2, "The first name must contain at least 2 symbols!")
+        ]
     )
 
     last_name = models.CharField(
         max_length=30,
+        validators=[
+            MinLengthValidator(2, "The last name must contain at least 2 symbols!")
+        ]
     )
 
     date_of_birth = models.DateField(
@@ -77,9 +87,17 @@ class Profile(models.Model):
         blank=True
     )
 
-    height = models.FloatField()
+    height = models.FloatField(
+        validators=[
+            MinValueValidator(1, "The height must be a positive number!")
+        ]
+    )
 
-    weight = models.FloatField()
+    weight = models.FloatField(
+        validators=[
+            MinValueValidator(1, "The weight must be a positive number!")
+        ]
+    )
 
     short_description = models.CharField(
         max_length=150,

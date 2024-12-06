@@ -4,11 +4,11 @@
     <main class="profile-main">
         <section class="remove-meal-section">
             <div class="container">
-                <h2>Are you sure you want to remove this meal?</h2>
+                <h2>Are you sure you want to remove this meal: {{ meal.name }}?</h2>
 
                 <div class="action-buttons">
                     <a href="{% url 'meals-dashboard' %}" class="btn btn-cancel">Cancel</a>
-                    <form action="#" method="POST">
+                    <form action="{% url 'remove-meal' meal.pk %}" method="POST">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-remove">Remove</button>
                     </form>

@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('FitnessTracker.common.urls')),
     path('workouts/', include('FitnessTracker.workouts.urls')),
     path('accounts/', include('FitnessTracker.accounts.urls')),
-    path('meals', include('FitnessTracker.meals.urls')),
+    path('meals/', include('FitnessTracker.meals.urls')),
     path('progress/', include('FitnessTracker.progress.urls'))
 ]
 
