@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <section class="edit-log">
+        <div class="container">
+            <div class="edit-log-content">
+                <h4>Edit Profile</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            <div class="error">{{ field.errors }}</div>
+                        </div>
+                    {% endfor %}
+
+
+                    <button type="submit" class="save-profile-changes-btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

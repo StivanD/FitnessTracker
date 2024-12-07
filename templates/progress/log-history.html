@@ -4,34 +4,32 @@
     <main class="profile-main">
         <section class="exercise-logs-section">
             <div class="container">
-                <h2>Progress History for Bench Press</h2>
+                <h2>Progress History for {{ exercise.name }}</h2>
                 <table class="logs-table">
                     <thead>
                     <tr>
                         <th>Logs</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>November 1, 2024, 10:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>November 5, 2024, 9:30 AM</td>
-                    </tr>
-                    <tr>
-                        <td>November 10, 2024, 11:15 AM</td>
-                    </tr>
-                    <tr>
-                        <td>November 15, 2024, 10:45 AM</td>
-                    </tr>
-                    <tr>
-                        <td>November 20, 2024, 12:00 PM</td>
-                    </tr>
+                    {% for log in progress_logs %}
+                        <tr>
+                            <td>{{ log.log }} on {{ log.date }}</td>
+                            <td class="buttons-td">
+                                <a href="{% url 'log-edit' log.pk %}" class="btn-edit-progress">Edit</a>
+                                <a href="{% url 'log-delete' log.pk %}" class="btn-delete-progress">Delete</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="2">No progress history found.</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
                 <a href="{% url 'progress-page' %}" class="btn-back">Back to Progress</a>
             </div>
         </section>
     </main>
-
 {% endblock %}

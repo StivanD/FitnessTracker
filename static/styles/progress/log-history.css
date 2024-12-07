@@ -53,6 +53,29 @@
     font-weight: bold;
 }
 
+.buttons-td {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-edit-progress,
+.btn-delete-progress {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.5s;
+}
+
+.btn-edit-progress:hover {
+    color: #007bff;
+}
+
+.btn-delete-progress:hover {
+    color: #ff0044;
+}
+
 .btn-back {
     display: inline-block;
     padding: 0.8rem 1.5rem;

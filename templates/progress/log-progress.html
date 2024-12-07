@@ -4,58 +4,23 @@
     <main class="profile-main">
         <section class="progress-log-section">
             <div class="container">
-                <h2>Progress Logs</h2>
+                <h2>Log Progress for {{ exercise.name }}</h2>
                 <div class="exercise-logs">
-                    <!-- Example Exercise Log -->
-                    <div class="exercise-log" id="exercise-log-1">
-                        <h3>Bench Press</h3>
-                        <form action="#" method="POST">
-                            {% csrf_token %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
 
-                            <div class="log-entries">
-                                <div class="log-entry" id="log_1">
-                                    <label for="log_1_input">Log #1:</label>
-                                    <input type="text" id="log_1_input" name="log_1"
-                                           placeholder="E.g., 120kg on 2024-11-01 / 15 seconds hold on 2024-11-01">
-                                    <button type="button" class="btn-remove-log" onclick="removeLog('log_1')">Remove Log
-                                    </button>
-                                </div>
+                        {% for field in form %}
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                                <div class="error">{{ field.errors }}</div>
                             </div>
+                        {% endfor %}
 
-                            <button type="button" class="btn-add-log" onclick="addLog('exercise-log-1')">Add Log
-                            </button>
-                            <button type="submit" class="btn-save-log">Save Logs</button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn-save-log">Save Log</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
-
-    <script>
-        // Function to dynamically add new log fields
-        function addLog(exerciseLogId) {
-            const logContainer = document.querySelector(`#${exerciseLogId} .log-entries`);
-            const logCount = logContainer.children.length + 1; // Count current log entries
-            const newLogId = `log_${logCount}`;
-            const newLog = document.createElement('div');
-            newLog.classList.add('log-entry');
-            newLog.id = newLogId;
-            newLog.innerHTML = `
-            <label for="${newLogId}_input">Log #${logCount}:</label>
-            <input type="text" id="${newLogId}_input" name="${newLogId}" placeholder="E.g., 15 reps on 2024-11-20">
-            <button type="button" class="btn-remove-log" onclick="removeLog('${newLogId}', '${exerciseLogId}')">Remove Log</button>
-        `;
-            logContainer.appendChild(newLog);
-        }
-
-        // Function to remove a log field and update the log numbers
-        function removeLog(logId, exerciseLogId) {
-            const logElement = document.getElementById(logId);
-            if (logElement) {
-                logElement.remove(); // Remove the selected log entry
-            }
-        }
-    </script>
-
 {% endblock %}

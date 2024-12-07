@@ -25,8 +25,8 @@
                         {% if request.user.is_authenticated %}
                             <li><a href="{% url 'meals-dashboard' %}">Meals</a></li>
                             <li><a href="{% url 'progress-page' %}">Progress</a></li>
-                            <li><a href="{% url 'profile-details' user.username %}">Profile</a></li>
                             <li><a href="{% url 'favourite-workouts' %}">Favourites</a></li>
+                            <li><a href="{% url 'profile-details' user.username %}">Profile</a></li>
                         {% endif %}
                     </ul>
                 </div>

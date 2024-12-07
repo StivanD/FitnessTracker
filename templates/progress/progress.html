@@ -1,70 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="progress-section">
-    <div class="container">
-        <h2>Your Progress</h2>
-        <a class="log-new-exercise" href="{% url 'log-exercise' %}">Log New Exercise</a>
-        <div class="exercises-grid">
-            <!-- Example Exercise Card -->
-            <div class="exercise-card">
-                <h3>Bench Press</h3>
-                <ul class="personal-records">
-                    <li><strong>150 kg</strong> on 2024-11-20</li>
-                    <li><strong>140 kg</strong> on 2024-10-15</li>
-                    <li><strong>130 kg</strong> on 2024-09-05</li>
-                    <li><strong>125 kg</strong> on 2024-08-25</li>
-                    <li><strong>120 kg</strong> on 2024-07-10</li>
-                </ul>
-                <div class="log-buttons">
-                    <a href="{% url 'log-progress' %}" class="btn-log-progress">Log Progress</a>
-                    <a href="{% url 'log-history' %}" class="btn-log-progress">Log History</a>
-                </div>
+    <section class="progress-section">
+        <div class="container">
+            <h2>Your Progress</h2>
+            <a class="log-new-exercise" href="{% url 'log-exercise' %}">Log New Exercise</a>
+            <div class="exercises-grid">
+                {% if not exercises %}
+                    <h2>No current progress logs.</h2>
+                {% else %}
+                    {% for item in exercises %}
+                        <div class="exercise-card">
+                            <h3>{{ item.exercise.name }}</h3>
+                            <ul class="personal-records">
+                                {% if not item.progress_logs %}
+                                    <h3>No current progress logs.</h3>
+                                {% else %}
+                                    {% for log in item.progress_logs %}
+                                        <li>{{ log.log }} on {{ log.date }}</li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                            <div class="log-buttons">
+                                <a href="{% url 'log-progress' item.exercise.id %}" class="btn-log-progress">Log Progress</a>
+                                <a href="{% url 'log-history' item.exercise.id %}" class="btn-log-progress">Log History</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
-            <div class="exercise-card">
-                <h3>Bench Press</h3>
-                <ul class="personal-records">
-                    <li><strong>150 kg</strong> on 2024-11-20</li>
-                    <li><strong>140 kg</strong> on 2024-10-15</li>
-                    <li><strong>130 kg</strong> on 2024-09-05</li>
-                    <li><strong>125 kg</strong> on 2024-08-25</li>
-                    <li><strong>120 kg</strong> on 2024-07-10</li>
-                </ul>
-                <div class="log-buttons">
-                    <a href="{% url 'log-progress' %}" class="btn-log-progress">Log Progress</a>
-                    <a href="{% url 'log-progress' %}" class="btn-log-progress">Log History</a>
-                </div>
-            </div>
-            <div class="exercise-card">
-                <h3>Bench Press</h3>
-                <ul class="personal-records">
-                    <li><strong>150 kg</strong> on 2024-11-20</li>
-                    <li><strong>140 kg</strong> on 2024-10-15</li>
-                    <li><strong>130 kg</strong> on 2024-09-05</li>
-                    <li><strong>125 kg</strong> on 2024-08-25</li>
-                    <li><strong>120 kg</strong> on 2024-07-10</li>
-                </ul>
-                <div class="log-buttons">
-                    <a href="{% url 'log-progress' %}" class="btn-log-progress">Log Progress</a>
-                    <a href="{% url 'log-progress' %}" class="btn-log-progress">Log History</a>
-                </div>
-            </div>
-            <div class="exercise-card">
-                <h3>Bench Press</h3>
-                <ul class="personal-records">
-                    <li><strong>150 kg</strong> on 2024-11-20</li>
-                    <li><strong>140 kg</strong> on 2024-10-15</li>
-                    <li><strong>130 kg</strong> on 2024-09-05</li>
-                    <li><strong>125 kg</strong> on 2024-08-25</li>
-                    <li><strong>120 kg</strong> on 2024-07-10</li>
-                </ul>
-                <div class="log-buttons">
-                    <a href="{% url 'log-progress' %}" class="btn-log-progress">Log Progress</a>
-                    <a href="{% url 'log-progress' %}" class="btn-log-progress">Log History</a>
-                </div>
-            </div>
-            <!-- Repeat Exercise Cards -->
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

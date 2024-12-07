@@ -28,6 +28,8 @@
 @import 'progress/log-progress.css';
 @import 'progress/log-history.css';
 @import 'progress/log-exercise.css';
+@import 'progress/log-edit.css';
+@import 'progress/log-delete.css';
 
 @import 'common/footer.css';
 

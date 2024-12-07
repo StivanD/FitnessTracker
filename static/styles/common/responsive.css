@@ -304,6 +304,11 @@
     .auth-container a {
         color: #fff;
     }
+
+    /* PROGRESS PAGE */
+    .log-buttons {
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width:320px) {
