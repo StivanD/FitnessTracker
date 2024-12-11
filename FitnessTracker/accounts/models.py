@@ -20,21 +20,21 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
         null=True,
         blank=True,
         validators=[
-            MinLengthValidator(2, ValidationError("The username must contain at least 2 symbols!"))
+            MinLengthValidator(2, "The username must contain at least 2 symbols!")
         ]
     )
 
     first_name = models.CharField(
         max_length=30,
         validators=[
-            MinLengthValidator(2, ValidationError("The first name must contain at least 2 symbols!"))
+            MinLengthValidator(2, "The first name must contain at least 2 symbols!")
         ]
     )
 
     last_name = models.CharField(
         max_length=30,
         validators=[
-            MinLengthValidator(2, ValidationError("The last name must contain at least 2 symbols!"))
+            MinLengthValidator(2, "The last name must contain at least 2 symbols!")
         ]
     )
 
@@ -93,13 +93,13 @@ class Profile(models.Model):
 
     height = models.FloatField(
         validators=[
-            MinValueValidator(1, ValidationError("The height must be a positive number!"))
+            MinValueValidator(1, "The height must be a positive number!")
         ]
     )
 
     weight = models.FloatField(
         validators=[
-            MinValueValidator(1, ValidationError("The weight must be a positive number!"))
+            MinValueValidator(1,"The weight must be a positive number!")
         ]
     )
 
