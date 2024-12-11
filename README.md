@@ -95,6 +95,8 @@ Fitness Tracker is a web-based application designed to help users manage their f
 ---
 
 ## Project Structure
+
+```bash
 FitnessTracker/ 
 | 
 |-- accounts/ # User management app
@@ -107,6 +109,7 @@ FitnessTracker/
 |-- static/ # Static assets (CSS, JS)
 |-- manage.py # Django management script 
 |-- requirements.txt # Python dependencies
+```
 
 ---
 
