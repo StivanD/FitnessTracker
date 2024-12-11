@@ -7,7 +7,7 @@ from FitnessTracker.meals.models import Meal
 class MealBaseForm(forms.ModelForm):
     class Meta:
         model = Meal
-        exclude = ('created_at', 'updated_at')
+        exclude = ('created_at', 'updated_at', 'user')
 
         widgets = {
             'name': TextInput(

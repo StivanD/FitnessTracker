@@ -1,7 +1,7 @@
 /* Edit Workout Section */
 .edit-workout {
     padding: 2rem 0;
-    background-image: url('../../images/gym-background3.jpg'); /* Replace with your image path */
+    background-image: url('../../../media/default_images/default_gym_background.jpg'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

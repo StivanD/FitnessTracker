@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import TemplateView, DetailView, ListView, CreateView, UpdateView, DeleteView
@@ -98,6 +98,14 @@ class EditWorkoutView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('workout-details', kwargs={'pk': self.object.pk})
 
+    def dispatch(self, request, *args, **kwargs):
+        workout = get_object_or_404(Workout, pk=self.kwargs['pk'])
+
+        if workout.creator != request.user:
+            return redirect('homepage')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.filter(creator=self.request.user)
@@ -113,6 +121,14 @@ class DeleteWorkoutView(LoginRequiredMixin, DeleteView):
     model = Workout
     template_name = 'workouts/delete-workout.html'
     context_object_name = 'workout'
+
+    def dispatch(self, request, *args, **kwargs):
+        workout = get_object_or_404(Workout, pk=self.kwargs['pk'])
+
+        if workout.creator != request.user:
+            return redirect('homepage')
+
+        return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         return super().get_queryset().filter(creator=self.request.user)

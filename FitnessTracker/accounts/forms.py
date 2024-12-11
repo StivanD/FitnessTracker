@@ -70,6 +70,10 @@ class UserLoginForm(AuthenticationForm):
         model = get_user_model()
         fields = ['username', 'password']
 
+        labels = {
+            'username': 'Username or Email'
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({
@@ -88,6 +92,7 @@ class UserLoginForm(AuthenticationForm):
 
         if user is None:
             raise ValidationError("Incorrect password.")
+
         return password
 
 

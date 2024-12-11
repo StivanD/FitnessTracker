@@ -7,7 +7,6 @@ class Meal(models.Model):
     class Meta:
         ordering = ['-created_at']
 
-
     name = models.CharField(
         max_length=255
     )

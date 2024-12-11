@@ -9,13 +9,9 @@
                 <!-- Profile Header -->
                 <div class="profile-header">
                     <img
-                            {% if user.profile.profile_picture %}
-                                src="{{ user.profile.profile_picture.url }}"
-                            {% else %}
-                                src="{% static 'images/profile-placeholder.png' %}"
-                            {% endif %}
-                                alt="Profile Picture"
-                                class="profile-picture">
+                            src="{{ user.profile.profile_picture.url }}"
+                            alt="Profile Picture"
+                            class="profile-picture">
                     <div class="profile-header-content">
                         <h2>{{ user.first_name }} {{ user.last_name }}</h2>
                         <p>Member since: {{ user.date_joined|date:"d F Y" }}</p>
@@ -55,7 +51,9 @@
                 <div class="created-workouts">
                     <div class="created-workouts-header">
                         <h3>Created Workouts</h3>
-                        <a href="{% url 'create-workout' %}">Create workout</a>
+                        {% if is_own_profile %}
+                            <a href="{% url 'create-workout' %}">Create workout</a>
+                        {% endif %}
                     </div>
                     <div class="created-workouts-content">
                         {% if user.workouts.exists %}

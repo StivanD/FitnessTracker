@@ -87,18 +87,19 @@ class Profile(models.Model):
     profile_picture = models.ImageField(
         upload_to='profile_pics/',
         null=True,
-        blank=True
+        blank=True,
+        default="default_images/default-profile-image.png"
     )
 
     height = models.FloatField(
         validators=[
-            MinValueValidator(1, "The height must be a positive number!")
+            MinValueValidator(1, ValidationError("The height must be a positive number!"))
         ]
     )
 
     weight = models.FloatField(
         validators=[
-            MinValueValidator(1, "The weight must be a positive number!")
+            MinValueValidator(1, ValidationError("The weight must be a positive number!"))
         ]
     )
 

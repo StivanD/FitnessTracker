@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
 
 from FitnessTracker.progress.forms import LogExerciseForm, LogProgressForm
@@ -43,6 +44,15 @@ class LogExerciseView(LoginRequiredMixin, CreateView):
 class LogProgressView(LoginRequiredMixin, TemplateView):
     template_name = 'progress/log-progress.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        exercise = get_object_or_404(ProgressExercise, id=self.kwargs['exercise_id'])
+
+        # Check if the exercise belongs to the logged-in user
+        if exercise.user != request.user:
+            return HttpResponseRedirect(reverse('homepage'))
+
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         exercise_id = kwargs.get('exercise_id')
@@ -71,6 +81,14 @@ class LogHistoryView(LoginRequiredMixin, ListView):
     template_name = 'progress/log-history.html'
     context_object_name = 'progress_logs'
 
+    def dispatch(self, request, *args, **kwargs):
+        exercise = get_object_or_404(ProgressExercise, id=self.kwargs['exercise_id'])
+
+        if exercise.user != self.request.user:
+            return redirect('homepage')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def get_queryset(self):
         exercise = get_object_or_404(ProgressExercise, id=self.kwargs['exercise_id'])
         return ProgressLog.objects.filter(exercise=exercise)
@@ -87,6 +105,14 @@ class LogEditView(LoginRequiredMixin, UpdateView):
     form_class = LogProgressForm
     template_name = 'progress/log-edit.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        log = get_object_or_404(ProgressLog, pk=self.kwargs['pk'])
+
+        if log.exercise.user != request.user:
+            return HttpResponseRedirect(reverse('homepage'))
+
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse_lazy('log-history', kwargs={'exercise_id': self.object.exercise.id})
 
@@ -94,6 +120,14 @@ class LogEditView(LoginRequiredMixin, UpdateView):
 class LogDeleteView(LoginRequiredMixin, DeleteView):
     model = ProgressLog
     template_name = 'progress/log-delete.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        log = get_object_or_404(ProgressLog, pk=self.kwargs['pk'])
+
+        if log.exercise.user != request.user:
+            return HttpResponseRedirect(reverse('homepage'))
+
+        return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('log-history', kwargs={'exercise_id': self.object.exercise.id})
