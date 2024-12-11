@@ -8,10 +8,17 @@
             <div class="profile-container">
                 <!-- Profile Header -->
                 <div class="profile-header">
-                    <img
-                            src="{{ user.profile.profile_picture.url }}"
-                            alt="Profile Picture"
-                            class="profile-picture">
+                    {% if user.profile.profile_picture %}
+                        <img
+                                src="{{ user.profile.profile_picture.url }}"
+                                alt="Profile Picture"
+                                class="profile-picture">
+                    {% else %}
+                        <img
+                                src="/media/default_images/default-profile-image.png"
+                                alt="Default Profile Picture"
+                                class="profile-picture">
+                    {% endif %}
                     <div class="profile-header-content">
                         <h2>{{ user.first_name }} {{ user.last_name }}</h2>
                         <p>Member since: {{ user.date_joined|date:"d F Y" }}</p>
@@ -26,7 +33,7 @@
                         {% if is_own_profile %}
                             <li>Email: {{ user.email }}</li>
                         {% endif %}
-                        <li>Age: {{ user.age|default:"N/A" }}</li>
+                        <li>Age: {{ user.age }}</li>
                         <li>
                             Height:
                             {% if user.profile.height and user.profile.height != 0 %}

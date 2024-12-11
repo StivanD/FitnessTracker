@@ -99,7 +99,7 @@ class Profile(models.Model):
 
     weight = models.FloatField(
         validators=[
-            MinValueValidator(1,"The weight must be a positive number!")
+            MinValueValidator(1, "The weight must be a positive number!")
         ]
     )
 

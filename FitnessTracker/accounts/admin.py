@@ -2,14 +2,16 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import PermissionDenied
-
+import logging
 from .models import AppUser, Profile
+
+logger = logging.getLogger('accounts')
 
 
 @admin.register(AppUser)
 class AppUserAdmin(UserAdmin):
     model = AppUser
-    list_display = ['email', 'username', 'first_name', 'last_name', 'is_staff', 'is_active']
+    list_display = ['email', 'username', 'date_of_birth', 'first_name', 'last_name', 'is_staff', 'is_active']
     list_filter = ['is_staff', 'is_active']
     search_fields = ['email', 'username']
     ordering = ['email']
@@ -23,17 +25,20 @@ class AppUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'password1', 'password2', 'first_name', 'last_name', 'is_staff', 'is_active'),
+            'fields': ('email', 'username', 'date_of_birth', 'password1', 'password2', 'first_name', 'last_name', 'is_staff', 'is_active'),
         }),
     )
 
     def save_model(self, request, obj, form, change):
+        # Prevent assigning superuser status if not allowed
         if not request.user.is_superuser and obj.is_superuser:
             raise PermissionDenied("You cannot assign superuser status.")
 
-        if not change:
-            obj.set_password(obj.password)
+        # if not change:
+        #     if obj.password:
+        #         obj.set_password(obj.password)
 
+        # Save the user
         super().save_model(request, obj, form, change)
 
     def get_form(self, request, obj=None, **kwargs):
