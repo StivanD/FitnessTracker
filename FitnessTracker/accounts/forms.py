@@ -66,34 +66,43 @@ class AppUserChangeForm(UserChangeForm):
 
 
 class UserLoginForm(AuthenticationForm):
-    class Meta:
-        model = get_user_model()
-        fields = ['username', 'password']
-
-        labels = {
-            'username': 'Username or Email'
-        }
+    """
+    Custom login form that allows logging in with either email or username.
+    """
+    username = forms.CharField(
+        label="Username or Email",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter your username or email',
+            'class': 'form-control',
+        })
+    )
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'Enter your password',
+            'class': 'form-control',
+        })
+    )
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the form with custom placeholders and styles.
+        """
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            'placeholder': 'Enter your username or email',
-        })
-        self.fields['password'].widget.attrs.update({
-            'placeholder': 'Enter your password',
-        })
 
-    def clean_password(self):
-        username = self.cleaned_data.get('username')
+    def clean(self):
+        cleaned_data = super().clean()
+        email_or_username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
 
-        # Authenticate user
-        user = authenticate(username=username, password=password)
+        # Use the custom backend
+        self.user_cache = authenticate(self.request, username=email_or_username, password=password)
+        if self.user_cache is None:
+            raise forms.ValidationError("Please enter a correct username/email and password.")
+        else:
+            self.confirm_login_allowed(self.user_cache)
 
-        if user is None:
-            raise ValidationError("Incorrect password.")
-
-        return password
+        return self.cleaned_data
 
 
 class UserProfileEditForm(forms.ModelForm):

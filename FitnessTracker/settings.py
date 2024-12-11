@@ -94,7 +94,7 @@ DATABASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    'FitnessTracker.accounts.authentication.EmailOrUsernameBackend',
+    # 'FitnessTracker.accounts.authentication.EmailOrUsernameBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
