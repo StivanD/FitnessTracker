@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, SetPasswordForm
 from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator
 from django.forms import EmailInput, TextInput, PasswordInput, DateField, DateInput, ClearableFileInput, NumberInput, \
     Textarea
 
@@ -108,6 +109,15 @@ class UserProfileEditForm(forms.ModelForm):
         )
     )
 
+    date_of_birth = forms.DateField(
+        widget=forms.DateInput(
+            attrs={
+                'type': 'date',
+            }
+        ),
+        required=False
+    )
+
     class Meta:
         model = Profile
         fields = ['height', 'weight', 'short_description', 'profile_picture']
@@ -138,11 +148,42 @@ class UserProfileEditForm(forms.ModelForm):
         self.fields = {
             'username': self.fields['username'],
             'email': self.fields['email'],
+            'date_of_birth': self.fields['date_of_birth'],
             'height': self.fields['height'],
             'weight': self.fields['weight'],
             'short_description': self.fields['short_description'],
             'profile_picture': self.fields['profile_picture'],
         }
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+
+        if len(username) < 2:
+            raise ValidationError("The username must contain at least 2 symbols!")
+
+        user_model = get_user_model()
+        if user_model.objects.filter(username=username).exclude(id=self.instance.user.id).exists():
+            raise ValidationError("This username is already taken.")
+
+        return username
+
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get("username")
+        email = cleaned_data.get("email")
+        date_of_birth = cleaned_data.get("date_of_birth")
+
+        user = self.instance.user
+        if username:
+            user.username = username
+        if email:
+            user.email = email
+        if date_of_birth:
+            user.date_of_birth = date_of_birth
+
+        user.clean()
+
+        return cleaned_data
 
 
 class CustomPasswordResetForm(SetPasswordForm):

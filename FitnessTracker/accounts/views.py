@@ -15,6 +15,11 @@ class UserRegisterView(FormView):
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('homepage')
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
@@ -26,7 +31,7 @@ class UserLoginView(LoginView):
     redirect_authenticated_user = True
 
 
-class ProfileDetailsView(DetailView):
+class ProfileDetailsView(LoginRequiredMixin, DetailView):
     model = AppUser
     template_name = "profiles/profile-details.html"
     context_object_name = 'user'
@@ -41,7 +46,7 @@ class ProfileDetailsView(DetailView):
         return context
 
 
-class EditProfileView(UpdateView):
+class EditProfileView(LoginRequiredMixin, UpdateView):
     model = Profile
     template_name = "profiles/edit-profile.html"
     form_class = UserProfileEditForm
@@ -53,24 +58,22 @@ class EditProfileView(UpdateView):
         initial = super().get_initial()
         initial['username'] = self.request.user.username
         initial['email'] = self.request.user.email
+        initial['date_of_birth'] = self.request.user.date_of_birth
         return initial
 
     def get_success_url(self):
         return reverse_lazy('profile-details', kwargs={'username': self.request.user.username})
 
     def form_valid(self, form):
-        profile = form.save(commit=False)
-        profile.save()
-
+        form.save(commit=True)
         user = self.request.user
-        user.username = form.cleaned_data['username']
-        user.email = form.cleaned_data['email']
+
         user.save()
 
         return super().form_valid(form)
 
 
-class CustomPasswordResetView(PasswordChangeView):
+class CustomPasswordResetView(LoginRequiredMixin, PasswordChangeView):
     template_name = 'profiles/reset-password.html'
     form_class = CustomPasswordResetForm
 
@@ -82,5 +85,3 @@ class CustomPasswordResetView(PasswordChangeView):
         user.set_password(form.cleaned_data['new_password1'])
         user.save()
         return super().form_valid(form)
-
-

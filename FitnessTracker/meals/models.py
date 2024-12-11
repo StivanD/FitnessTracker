@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -33,6 +34,12 @@ class Meal(models.Model):
 
     updated_at = models.DateTimeField(
         auto_now=True
+    )
+
+    user = models.ForeignKey(
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='meals',
     )
 
     def __str__(self):

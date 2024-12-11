@@ -8,6 +8,9 @@ User = get_user_model()
 
 # Create your models here.
 class WorkoutCategory(models.Model):
+    class Meta:
+        verbose_name_plural = 'Workout categories'
+
     name = models.CharField(
         max_length=100,
         unique=True
@@ -106,6 +109,9 @@ class Workout(models.Model):
 
 
 class FavouriteWorkouts(models.Model):
+    class Meta:
+        verbose_name_plural = 'Favourite workouts'
+
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,

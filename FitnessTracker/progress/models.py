@@ -15,6 +15,9 @@ class ProgressExercise(models.Model):
         related_name='progress_exercises'
     )
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class ProgressLog(models.Model):
     class Meta:

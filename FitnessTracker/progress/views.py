@@ -40,7 +40,7 @@ class LogExerciseView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class LogProgressView(TemplateView):
+class LogProgressView(LoginRequiredMixin, TemplateView):
     template_name = 'progress/log-progress.html'
 
     def get_context_data(self, **kwargs):
@@ -66,13 +66,12 @@ class LogProgressView(TemplateView):
         return self.render_to_response(context)
 
 
-class LogHistoryView(ListView):
+class LogHistoryView(LoginRequiredMixin, ListView):
     model = ProgressLog
     template_name = 'progress/log-history.html'
     context_object_name = 'progress_logs'
 
     def get_queryset(self):
-        # Retrieve logs for a specific exercise based on exercise_id in URL
         exercise = get_object_or_404(ProgressExercise, id=self.kwargs['exercise_id'])
         return ProgressLog.objects.filter(exercise=exercise)
 
@@ -83,7 +82,7 @@ class LogHistoryView(ListView):
         return context
 
 
-class LogEditView(UpdateView):
+class LogEditView(LoginRequiredMixin, UpdateView):
     model = ProgressLog
     form_class = LogProgressForm
     template_name = 'progress/log-edit.html'
@@ -92,7 +91,7 @@ class LogEditView(UpdateView):
         return reverse_lazy('log-history', kwargs={'exercise_id': self.object.exercise.id})
 
 
-class LogDeleteView(DeleteView):
+class LogDeleteView(LoginRequiredMixin, DeleteView):
     model = ProgressLog
     template_name = 'progress/log-delete.html'
 

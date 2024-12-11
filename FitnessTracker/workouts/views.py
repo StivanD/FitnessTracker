@@ -76,7 +76,7 @@ class WorkoutDetailsView(LoginRequiredMixin, DetailView):
         return context
 
 
-class CreateWorkoutView(CreateView):
+class CreateWorkoutView(LoginRequiredMixin, CreateView):
     model = CreateWorkoutForm
     template_name = 'workouts/create-workout.html'
     form_class = CreateWorkoutForm
@@ -89,7 +89,7 @@ class CreateWorkoutView(CreateView):
         return reverse('user-workouts', kwargs={'username': self.request.user.username})
 
 
-class EditWorkoutView(UpdateView):
+class EditWorkoutView(LoginRequiredMixin, UpdateView):
     model = Workout
     form_class = EditWorkoutForm
     template_name = 'workouts/edit-workout.html'
@@ -109,7 +109,7 @@ class EditWorkoutView(UpdateView):
         return super().form_valid(form)
 
 
-class DeleteWorkoutView(DeleteView):
+class DeleteWorkoutView(LoginRequiredMixin, DeleteView):
     model = Workout
     template_name = 'workouts/delete-workout.html'
     context_object_name = 'workout'
@@ -121,7 +121,7 @@ class DeleteWorkoutView(DeleteView):
         return reverse('user-workouts', kwargs={'username': self.request.user.username})
 
 
-class UserWorkoutsListView(ListView):
+class UserWorkoutsListView(LoginRequiredMixin, ListView):
     model = Workout
     template_name = 'workouts/user-workouts.html'
     context_object_name = 'workouts'
@@ -178,4 +178,3 @@ class UserFavouriteWorkoutsView(LoginRequiredMixin, TemplateView):
         context['profile_user'] = self.request.user
 
         return context
-

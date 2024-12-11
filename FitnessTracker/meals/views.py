@@ -13,7 +13,7 @@ class MealsDashboardView(LoginRequiredMixin, ListView):
     template_name = 'meals/meals-dashboard.html'
 
 
-class MealCreateView(CreateView):
+class MealCreateView(LoginRequiredMixin, CreateView):
     model = Meal
     form_class = MealCreateForm
     template_name = 'meals/add-meal.html'
@@ -23,14 +23,14 @@ class MealCreateView(CreateView):
         return super().form_valid(form)
 
 
-class MealEditView(UpdateView):
+class MealEditView(LoginRequiredMixin, UpdateView):
     model = Meal
     form_class = MealEditForm
     template_name = 'meals/edit-meal.html'
     success_url = reverse_lazy('meals-dashboard')
 
 
-class MealDeleteView(DeleteView):
+class MealDeleteView(LoginRequiredMixin, DeleteView):
     model = Meal
     template_name = 'meals/remove-meal.html'
     success_url = reverse_lazy('meals-dashboard')

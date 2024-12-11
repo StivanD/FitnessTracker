@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.base_user import AbstractBaseUser
@@ -16,22 +17,24 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         max_length=100,
         unique=True,
+        null=True,
+        blank=True,
         validators=[
-            MinLengthValidator(2, "The username must contain at least 2 symbols!")
+            MinLengthValidator(2, ValidationError("The username must contain at least 2 symbols!"))
         ]
     )
 
     first_name = models.CharField(
         max_length=30,
         validators=[
-            MinLengthValidator(2, "The first name must contain at least 2 symbols!")
+            MinLengthValidator(2, ValidationError("The first name must contain at least 2 symbols!"))
         ]
     )
 
     last_name = models.CharField(
         max_length=30,
         validators=[
-            MinLengthValidator(2, "The last name must contain at least 2 symbols!")
+            MinLengthValidator(2, ValidationError("The last name must contain at least 2 symbols!"))
         ]
     )
 
