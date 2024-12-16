@@ -6,8 +6,9 @@ SoftUni - https://softuni.bg/
 
 Judge system - https://judge.softuni.org/
 
+![image](https://github.com/user-attachments/assets/ead0d208-5b45-4b52-be7c-4fb073000b78)
+![image](https://github.com/user-attachments/assets/4a938554-91f2-4212-b0d6-869403a754b9)
 
-# Fitness Tracker
 
 ## Table of Contents
 - [Overview](#overview)
